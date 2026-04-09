@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design System | CTW Cargo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ╔══════════════════════════════════╗ -->
+  <!-- ║           SIDEBAR               ║ -->
+  <!-- ╚══════════════════════════════════╝ -->
+  <aside class="sidebar" id="sidebar">
+
+    <div class="sidebar-logo">
+      <div class="logo-icon-wrap">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" fill="white" opacity=".9"/><polyline points="9 22 9 12 15 12 15 22" fill="white" opacity=".6"/></svg>
+      </div>
+      <div>
+        <div class="logo-name">CTW Cargo</div>
+        <div class="logo-tag">Design System <span class="version-chip">v1.0</span></div>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+
+      <div class="nav-group">
+        <div class="nav-group-label">Getting Started</div>
+        <a class="nav-link active" href="#overview" data-section="overview">
+          <span class="nav-icon">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+          </span>
+          Overview
+        </a>
+        <a class="nav-link" href="#figma-connect" data-section="figma-connect">
+          <span class="nav-icon">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z"/><path d="M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z"/><path d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 1 1-7 0z"/><path d="M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 1 1-7 0z"/><path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z"/></svg>
+          </span>
+          Figma Integration
+        </a>
+      </div>
+
+      <div class="nav-divider"></div>
+
+      <div class="nav-group">
+        <div class="nav-group-label">Foundation</div>
+        <a class="nav-link" href="#colors" data-section="colors">
+          <span class="nav-icon">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+          </span>
+          Colors
+        </a>
+        <a class="nav-link" href="#typography" data-section="typography">
+          <span class="nav-icon">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+          </span>
+          Typography
+        </a>
+        <a class="nav-link" href="#spacing" data-section="spacing">
+          <span class="nav-icon">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 3H3"/><path d="M21 21H3"/><path d="M12 7v10"/><path d="M8 11l4-4 4 4"/><path d="M8 17l4-4 4 4" opacity=".4"/></svg>
+          </span>
+          Spacing
+        </a>
+      </div>
+
+      <div class="nav-divider"></div>
+
+      <div class="nav-group">
+        <div class="nav-group-label">Components</div>
+        <a class="nav-link" href="#buttons" data-section="buttons">
+          <span class="nav-icon">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="7" width="20" height="10" rx="5"/></svg>
+          </span>
+          Button
+          <span class="nav-badge">V.2</span>
+        </a>
+        <a class="nav-link" href="#badge" data-section="badge">
+          <span class="nav-icon">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+          </span>
+          Badge
+        </a>
+        <a class="nav-link" href="#avatar" data-section="avatar">
+          <span class="nav-icon">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </span>
+          Avatar
+        </a>
+        <a class="nav-link" href="#tabs" data-section="tabs">
+          <span class="nav-icon">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 3H5a2 2 0 0 0-2 2v4"/><path d="M9 3h6"/><path d="M15 3h4a2 2 0 0 1 2 2v4"/><rect x="3" y="9" width="18" height="12" rx="2"/></svg>
+          </span>
+          Tab
+        </a>
+        <a class="nav-link" href="#inputs" data-section="inputs">
+          <span class="nav-icon">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="5" width="18" height="14" rx="2"/><line x1="7" y1="12" x2="7.01" y2="12" stroke-linecap="round" stroke-width="3"/></svg>
+          </span>
+          Input
+        </a>
+        <a class="nav-link" href="#dropdown" data-section="dropdown">
+          <span class="nav-icon">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+          </span>
+          Dropdown
+        </a>
+        <a class="nav-link" href="#divider" data-section="divider">
+          <span class="nav-icon">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="7" y2="6" opacity=".4"/><line x1="3" y1="18" x2="7" y2="18" opacity=".4"/></svg>
+          </span>
+          Divider
+        </a>
+      </div>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <a href="https://www.figma.com/design/1oi1KLBMz6qVDhAOn7kQOf" target="_blank" class="figma-link-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z"/><path d="M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z"/><path d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 1 1-7 0z"/><path d="M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 1 1-7 0z"/><path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z"/></svg>
+        Open in Figma
+      </a>
+    </div>
+  </aside>
+
+  <!-- Overlay (mobile) -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- ╔══════════════════════════════════╗ -->
+  <!-- ║         MAIN CONTENT            ║ -->
+  <!-- ╚══════════════════════════════════╝ -->
+  <div class="layout-main" id="layoutMain">
+
+    <!-- Top Bar -->
+    <header class="topbar">
+      <button class="hamburger" id="menuToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="topbar-breadcrumb">
+        <span class="bc-root">Design System</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        <span class="bc-current" id="breadcrumb">Overview</span>
+      </nav>
+      <div class="topbar-right">
+        <button class="search-box" id="searchBox" aria-label="Open search" onclick="openSearch()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <span>Search...</span>
+          <kbd>⌘K</kbd>
+        </button>
+      </div>
+    </header>
+
+    <!-- ═══ CONTENT ═══ -->
+    <main class="page-content">
+
+      <!-- ── OVERVIEW ─────────────────────────────────────── -->
+      <section id="overview" class="ds-section">
+
+        <!-- Hero -->
+        <div class="hero">
+          <div class="hero-bg">
+            <div class="hero-col" style="--c:#1E2F6E"></div>
+            <div class="hero-col" style="--c:#3B509E"></div>
+            <div class="hero-col" style="--c:#546BC0"></div>
+            <div class="hero-col" style="--c:#7189E2"></div>
+            <div class="hero-col" style="--c:#8FA6FF"></div>
+            <div class="hero-col" style="--c:#DAE2FF"></div>
+          </div>
+          <div class="hero-card">
+            <div class="hero-label">CTW Cargo</div>
+            <h1 class="hero-heading">Design System</h1>
+            <p class="hero-sub">By Nuttarika Koedruen</p>
+          </div>
+          <div class="hero-meta">
+            <span class="hero-chip">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Up to date
+            </span>
+            <span class="hero-chip">8 Components</span>
+            <span class="hero-chip">Figma Connected</span>
+          </div>
+        </div>
+
+        <!-- Intro -->
+        <p class="page-desc">
+          Design System ของ CTW Cargo รวบรวม Styles, Tokens และ UI Components ที่ใช้ในการพัฒนาผลิตภัณฑ์
+          ออกแบบเพื่อให้ developer สามารถนำไปใช้งานได้อย่างสม่ำเสมอและรวดเร็ว
+        </p>
+
+        <!-- Quick-nav cards -->
+        <div class="qnav-grid">
+          <button class="qnav-card" onclick="gotoSection('colors')">
+            <div class="qnav-palette">
+              <span style="background:#3B509E"></span>
+              <span style="background:#546BC0"></span>
+              <span style="background:#7189E2"></span>
+              <span style="background:#8FA6FF"></span>
+              <span style="background:#DAE2FF"></span>
+            </div>
+            <div class="qnav-body">
+              <div class="qnav-title">Colors</div>
+              <div class="qnav-desc">14 styles · Primary Cargo, Gradient, Text, Light</div>
+            </div>
+            <svg class="qnav-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+
+          <button class="qnav-card" onclick="gotoSection('typography')">
+            <div class="qnav-type-preview">
+              <span style="font-size:22px;font-weight:800;color:#3B509E;line-height:1">Aa</span>
+              <span style="font-size:14px;color:#8F90A6;">Inter · Noto Sans Thai</span>
+            </div>
+            <div class="qnav-body">
+              <div class="qnav-title">Typography</div>
+              <div class="qnav-desc">9 styles · Display → Caption</div>
+            </div>
+            <svg class="qnav-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+
+          <button class="qnav-card" onclick="gotoSection('buttons')">
+            <div class="qnav-comp-preview">
+              <span class="btn btn-primary btn-sm">Primary</span>
+              <span class="btn btn-secondary btn-sm">Secondary</span>
+            </div>
+            <div class="qnav-body">
+              <div class="qnav-title">Components</div>
+              <div class="qnav-desc">8 components · Button → Divider</div>
+            </div>
+            <svg class="qnav-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+
+          <button class="qnav-card" onclick="gotoSection('figma-connect')">
+            <div class="qnav-figma-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3B509E" stroke-width="1.8"><path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z"/><path d="M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z"/><path d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 1 1-7 0z"/><path d="M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 1 1-7 0z"/><path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z"/></svg>
+            </div>
+            <div class="qnav-body">
+              <div class="qnav-title">Figma Integration</div>
+              <div class="qnav-desc">VS Code · Code Connect</div>
+            </div>
+            <svg class="qnav-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- ── FIGMA INTEGRATION ─────────────────────────────── -->
+      <section id="figma-connect" class="ds-section">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Figma Integration</h2>
+            <p class="section-desc">เชื่อมต่อ Figma Design System เข้ากับโค้ดผ่าน VS Code และ Code Connect</p>
+          </div>
+          <a href="https://www.figma.com/design/1oi1KLBMz6qVDhAOn7kQOf" target="_blank" class="btn btn-ghost btn-sm">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Open Figma
+          </a>
+        </div>
+
+        <!-- File key banner -->
+        <div class="file-key-banner">
+          <div class="fk-left">
+            <div class="fk-dot"></div>
+            <span class="fk-label">Figma File Key</span>
+            <code class="fk-key">1oi1KLBMz6qVDhAOn7kQOf</code>
+          </div>
+          <button class="fk-copy" onclick="copyText('1oi1KLBMz6qVDhAOn7kQOf', this)">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            Copy
+          </button>
+        </div>
+
+        <!-- Steps -->
+        <ol class="step-list">
+          <li class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <div class="step-title">ติดตั้ง Figma VS Code Extension</div>
+              <p class="step-desc">ติดตั้ง extension เพื่อดู design spec และ inspect components ได้โดยตรงใน VS Code</p>
+              <div class="codeblock">
+                <div class="cb-header">
+                  <span class="cb-lang">Shell</span>
+                  <button class="cb-copy" data-copy="ext install figma.figma-vscode-extension">Copy</button>
+                </div>
+                <pre><code><span class="tk-cmd">ext install</span> figma.figma-vscode-extension</code></pre>
+              </div>
+            </div>
+          </li>
+
+          <li class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <div class="step-title">ติดตั้ง Figma Code Connect CLI</div>
+              <p class="step-desc">ใช้เพื่อ link component ในโค้ดเข้ากับ component ใน Figma</p>
+              <div class="codeblock">
+                <div class="cb-header">
+                  <span class="cb-lang">Shell</span>
+                  <button class="cb-copy" data-copy="npm install --save-dev @figma/code-connect">Copy</button>
+                </div>
+                <pre><code><span class="tk-cmd">npm install</span> --save-dev @figma/code-connect</code></pre>
+              </div>
+            </div>
+          </li>
+
+          <li class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <div class="step-title">สร้าง Code Connect mapping</div>
+              <p class="step-desc">สร้างไฟล์ <code class="ic">.figma.tsx</code> สำหรับแต่ละ component</p>
+              <div class="codeblock">
+                <div class="cb-header">
+                  <span class="cb-lang">Button.figma.tsx</span>
+                  <button class="cb-copy" data-copy='import figma from "@figma/code-connect";
+import { Button } from "./Button";
+
+figma.connect(Button, "https://www.figma.com/design/1oi1KLBMz6qVDhAOn7kQOf", {
+  props: {
+    variant: figma.enum("Variant", {
+      primary: "primary",
+      secondary: "secondary",
+      ghost: "ghost",
+    }),
+    label: figma.string("Label"),
+    disabled: figma.boolean("Disabled"),
+  },
+  example: ({ variant, label, disabled }) => (
+    <Button variant={variant} disabled={disabled}>{label}</Button>
+  ),
+});'>Copy</button>
+                </div>
+                <pre><code><span class="tk-kw">import</span> figma <span class="tk-kw">from</span> <span class="tk-str">"@figma/code-connect"</span>;
+<span class="tk-kw">import</span> { Button } <span class="tk-kw">from</span> <span class="tk-str">"./Button"</span>;
+
+figma.<span class="tk-fn">connect</span>(Button, <span class="tk-str">"YOUR_FIGMA_URL"</span>, {
+  props: {
+    variant: figma.<span class="tk-fn">enum</span>(<span class="tk-str">"Variant"</span>, {
+      primary:   <span class="tk-str">"primary"</span>,
+      secondary: <span class="tk-str">"secondary"</span>,
+      ghost:     <span class="tk-str">"ghost"</span>,
+    }),
+    label:    figma.<span class="tk-fn">string</span>(<span class="tk-str">"Label"</span>),
+    disabled: figma.<span class="tk-fn">boolean</span>(<span class="tk-str">"Disabled"</span>),
+  },
+  example: ({ variant, label, disabled }) =&gt; (
+    &lt;<span class="tk-tag">Button</span> <span class="tk-attr">variant</span>={variant} <span class="tk-attr">disabled</span>={disabled}&gt;
+      {label}
+    &lt;/<span class="tk-tag">Button</span>&gt;
+  ),
+});</code></pre>
+              </div>
+            </div>
+          </li>
+
+          <li class="step-item">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <div class="step-title">Publish ไปยัง Figma</div>
+              <p class="step-desc">Push mapping ขึ้น Figma เพื่อให้ทีม design เห็น code reference ใน component panel</p>
+              <div class="codeblock">
+                <div class="cb-header">
+                  <span class="cb-lang">Shell</span>
+                  <button class="cb-copy" data-copy="npx figma connect publish">Copy</button>
+                </div>
+                <pre><code><span class="tk-cmd">npx</span> figma connect <span class="tk-str">publish</span></code></pre>
+              </div>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <!-- ── COLORS ──────────────────────────────────────────── -->
+      <section id="colors" class="ds-section">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Colors</h2>
+            <p class="section-desc">Color styles จาก Figma library — คลิก swatch เพื่อ copy hex · ชื่อ style ใช้อ้างอิงผ่าน <strong>Figma VS Code Extension</strong></p>
+          </div>
+        </div>
+
+        <!-- Primary Cargo -->
+        <div class="color-group-header">
+          <span class="color-group-icon">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+          </span>
+          <span class="color-group-name">Primary Cargo</span>
+          <span class="color-group-path">Primary Cargo / primaryCargoPrimaryCargo_*</span>
+        </div>
+        <div class="swatch-strip">
+          <div class="swatch" data-hex="#1E2F6E" data-style="Primary Cargo/primaryCargoPrimaryCargo_950" style="--sw:#1E2F6E">
+            <div class="sw-block"></div>
+            <div class="sw-label">950</div>
+            <div class="sw-style">_950</div>
+            <div class="sw-hex">#1E2F6E</div>
+          </div>
+          <div class="swatch" data-hex="#2A3E87" data-style="Primary Cargo/primaryCargoPrimaryCargo_900Base" style="--sw:#2A3E87">
+            <div class="sw-block"></div>
+            <div class="sw-label">900</div>
+            <div class="sw-style">_900Base</div>
+            <div class="sw-hex">#2A3E87</div>
+          </div>
+          <div class="swatch swatch-main" data-hex="#3B509E" data-style="Primary Cargo/primaryCargoPrimaryCargo_800" style="--sw:#3B509E">
+            <div class="sw-block"></div>
+            <div class="sw-label">800 <span class="sw-star">★</span></div>
+            <div class="sw-style">_800</div>
+            <div class="sw-hex">#3B509E</div>
+          </div>
+          <div class="swatch" data-hex="#546BC0" data-style="Primary Cargo/primaryCargoPrimaryCargo_700" style="--sw:#546BC0">
+            <div class="sw-block"></div>
+            <div class="sw-label">700</div>
+            <div class="sw-style">_700</div>
+            <div class="sw-hex">#546BC0</div>
+          </div>
+          <div class="swatch" data-hex="#7189E2" data-style="Primary Cargo/primaryCargoPrimaryCargo_600" style="--sw:#7189E2">
+            <div class="sw-block"></div>
+            <div class="sw-label">600</div>
+            <div class="sw-style">_600</div>
+            <div class="sw-hex">#7189E2</div>
+          </div>
+          <div class="swatch" data-hex="#8FA6FF" data-style="Primary Cargo/primaryCargoPrimaryCargo_500" style="--sw:#8FA6FF">
+            <div class="sw-block"></div>
+            <div class="sw-label">500</div>
+            <div class="sw-style">_500</div>
+            <div class="sw-hex">#8FA6FF</div>
+          </div>
+          <div class="swatch" data-hex="#AABEFF" data-style="Primary Cargo/primaryCargoPrimaryCargo_400" style="--sw:#AABEFF">
+            <div class="sw-block"></div>
+            <div class="sw-label">400</div>
+            <div class="sw-style">_400</div>
+            <div class="sw-hex">#AABEFF</div>
+          </div>
+          <div class="swatch" data-hex="#C3D0FF" data-style="Primary Cargo/primaryCargoPrimaryCargo_300" style="--sw:#C3D0FF">
+            <div class="sw-block"></div>
+            <div class="sw-label">300</div>
+            <div class="sw-style">_300</div>
+            <div class="sw-hex">#C3D0FF</div>
+          </div>
+          <div class="swatch" data-hex="#DAE2FF" data-style="Primary Cargo/primaryCargoPrimaryCargo_200" style="--sw:#DAE2FF">
+            <div class="sw-block"></div>
+            <div class="sw-label">200</div>
+            <div class="sw-style">_200</div>
+            <div class="sw-hex">#DAE2FF</div>
+          </div>
+          <div class="swatch" data-hex="#EDF0FF" data-style="Primary Cargo/primaryCargoPrimaryCargo_100" style="--sw:#EDF0FF">
+            <div class="sw-block"></div>
+            <div class="sw-label">100</div>
+            <div class="sw-style">_100</div>
+            <div class="sw-hex">#EDF0FF</div>
+          </div>
+          <div class="swatch" data-hex="#F5F7FF" data-style="Primary Cargo/primaryCargoPrimaryCargo_50" style="--sw:#F5F7FF" data-light="1">
+            <div class="sw-block"></div>
+            <div class="sw-label">50</div>
+            <div class="sw-style">_50</div>
+            <div class="sw-hex">#F5F7FF</div>
+          </div>
+        </div>
+
+        <!-- Gradient -->
+        <div class="color-group-header">
+          <span class="color-group-icon">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><defs><linearGradient id="gi" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#546BC0"/><stop offset="100%" stop-color="#AABEFF"/></linearGradient></defs><circle cx="12" cy="12" r="10" stroke="url(#gi)"/></svg>
+          </span>
+          <span class="color-group-name">Gradient</span>
+          <span class="color-group-path">Primary Cargo / Gardient / *</span>
+        </div>
+        <div class="swatch-strip">
+          <div class="swatch swatch-gradient" data-style="Primary Cargo/Gardient/Gardient" title="Primary Cargo/Gardient/Gardient">
+            <div class="sw-gradient-block" style="background: linear-gradient(135deg, #3B509E 0%, #7189E2 100%)"></div>
+            <div class="sw-label">Gardient</div>
+            <div class="sw-style">Gardient</div>
+          </div>
+          <div class="swatch swatch-gradient" data-style="Primary Cargo/Gardient/Gardient-pass" title="Primary Cargo/Gardient/Gardient-pass">
+            <div class="sw-gradient-block" style="background: linear-gradient(135deg, #546BC0 0%, #8FA6FF 100%)"></div>
+            <div class="sw-label">Gardient-pass</div>
+            <div class="sw-style">Gardient-pass</div>
+          </div>
+          <div class="swatch swatch-gradient" data-style="Primary Cargo/Gardient/Gardient-hover" title="Primary Cargo/Gardient/Gardient-hover">
+            <div class="sw-gradient-block" style="background: linear-gradient(135deg, #2A3E87 0%, #546BC0 100%)"></div>
+            <div class="sw-label">Gardient-hover</div>
+            <div class="sw-style">Gardient-hover</div>
+          </div>
+        </div>
+
+        <!-- Text & Light -->
+        <div class="color-row-2">
+          <div>
+            <div class="color-group-header">
+              <span class="color-group-icon">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+              </span>
+              <span class="color-group-name">Text</span>
+              <span class="color-group-path">Text / TEXT_COLOR_*</span>
+            </div>
+            <div class="swatch-strip">
+              <div class="swatch" data-hex="#28293D" data-style="Text/TEXT_COLOR_TEXT" style="--sw:#28293D">
+                <div class="sw-block"></div>
+                <div class="sw-label">Text</div>
+                <div class="sw-style">TEXT_COLOR_TEXT</div>
+                <div class="sw-hex">#28293D</div>
+              </div>
+              <div class="swatch" data-hex="#8F90A6" data-style="Text/TEXT_COLOR_DESCRIPTION" style="--sw:#8F90A6">
+                <div class="sw-block"></div>
+                <div class="sw-label">Description</div>
+                <div class="sw-style">TEXT_COLOR_DESC</div>
+                <div class="sw-hex">#8F90A6</div>
+              </div>
+              <div class="swatch" data-hex="#FFFFFF" data-style="Text/TEXT_COLOR_TEXT_WHITE" style="--sw:#FFFFFF" data-light="1">
+                <div class="sw-block"></div>
+                <div class="sw-label">White</div>
+                <div class="sw-style">TEXT_COLOR_WHITE</div>
+                <div class="sw-hex">#FFFFFF</div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="color-group-header">
+              <span class="color-group-icon">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 9h6M9 12h6M9 15h4" opacity=".6"/></svg>
+              </span>
+              <span class="color-group-name">Light</span>
+              <span class="color-group-path">Light / LIGHT_COLOR_*</span>
+            </div>
+            <div class="swatch-strip">
+              <div class="swatch" data-hex="#FFFFFF" data-style="Light/LIGHT_COLOR_LIGHT_BG" style="--sw:#FFFFFF" data-light="1">
+                <div class="sw-block"></div>
+                <div class="sw-label">Light BG</div>
+                <div class="sw-style">LIGHT_COLOR_BG</div>
+                <div class="sw-hex">#FFFFFF</div>
+              </div>
+              <div class="swatch" data-hex="#F8F9FF" data-style="Light/LIGHT_COLOR_LIGHT_DISABLE" style="--sw:#F8F9FF" data-light="1">
+                <div class="sw-block"></div>
+                <div class="sw-label">Disable</div>
+                <div class="sw-style">LIGHT_COLOR_DIS</div>
+                <div class="sw-hex">#F8F9FF</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Figma Style Reference -->
+        <h3 class="sub-heading" style="margin-top:28px;">Figma Color Style Reference</h3>
+        <div class="codeblock">
+          <div class="cb-header">
+            <span class="cb-lang">Figma Styles → CSS tokens</span>
+            <button class="cb-copy" data-copy="/* Figma Color Styles — Design System | CTW Cargo */
+/* File: https://www.figma.com/design/1oi1KLBMz6qVDhAOn7kQOf */
+
+/* ── Primary Cargo ────────────────────────────────── */
+/* Primary Cargo/primaryCargoPrimaryCargo_950  */  --color-primary-950: #1E2F6E;
+/* Primary Cargo/primaryCargoPrimaryCargo_900Base */ --color-primary-900: #2A3E87;
+/* Primary Cargo/primaryCargoPrimaryCargo_800  */  --color-primary-800: #3B509E;  /* ★ base */
+/* Primary Cargo/primaryCargoPrimaryCargo_700  */  --color-primary-700: #546BC0;
+/* Primary Cargo/primaryCargoPrimaryCargo_600  */  --color-primary-600: #7189E2;
+/* Primary Cargo/primaryCargoPrimaryCargo_500  */  --color-primary-500: #8FA6FF;
+/* Primary Cargo/primaryCargoPrimaryCargo_400  */  --color-primary-400: #AABEFF;
+/* Primary Cargo/primaryCargoPrimaryCargo_300  */  --color-primary-300: #C3D0FF;
+/* Primary Cargo/primaryCargoPrimaryCargo_200  */  --color-primary-200: #DAE2FF;
+/* Primary Cargo/primaryCargoPrimaryCargo_100  */  --color-primary-100: #EDF0FF;
+/* Primary Cargo/primaryCargoPrimaryCargo_50   */  --color-primary-50:  #F5F7FF;
+
+/* ── Text ─────────────────────────────────────────── */
+/* Text/TEXT_COLOR_TEXT_HEADER  */  --color-text-HEADER:  #000000;
+/* Text/TEXT_COLOR_TEXT        */  --color-text:        #28293D;
+/* Text/TEXT_COLOR_DESCRIPTION */  --color-text-desc:   #8F90A6;
+/* Text/TEXT_COLOR_TEXT_WHITE  */  --color-text-white:  #FFFFFF;
+
+/* ── Light ────────────────────────────────────────── */
+/* Light/LIGHT_COLOR_LIGHT_BG  */  --color-bg:          #FFFFFF;">Copy</button>
+          </div>
+          <pre><code><span class="tk-comment">/* Figma Color Styles — Design System | CTW Cargo */</span>
+<span class="tk-comment">/* File: figma.com/design/1oi1KLBMz6qVDhAOn7kQOf  */</span>
+
+<span class="tk-comment">/* ── Primary Cargo ──────────────────────────────── */</span>
+<span class="tk-comment">/* Primary Cargo/primaryCargoPrimaryCargo_950  */</span>  <span class="tk-prop">--color-primary-950</span>: <span class="tk-val">#1E2F6E</span>;
+<span class="tk-comment">/* Primary Cargo/primaryCargoPrimaryCargo_900Base */</span> <span class="tk-prop">--color-primary-900</span>: <span class="tk-val">#2A3E87</span>;
+<span class="tk-comment">/* Primary Cargo/primaryCargoPrimaryCargo_800  */</span>  <span class="tk-prop">--color-primary-800</span>: <span class="tk-val">#3B509E</span>; <span class="tk-comment">/* ★ base */</span>
+<span class="tk-comment">/* Primary Cargo/primaryCargoPrimaryCargo_700  */</span>  <span class="tk-prop">--color-primary-700</span>: <span class="tk-val">#546BC0</span>;
+<span class="tk-comment">/* Primary Cargo/primaryCargoPrimaryCargo_600  */</span>  <span class="tk-prop">--color-primary-600</span>: <span class="tk-val">#7189E2</span>;
+<span class="tk-comment">/* Primary Cargo/primaryCargoPrimaryCargo_500  */</span>  <span class="tk-prop">--color-primary-500</span>: <span class="tk-val">#8FA6FF</span>;
+<span class="tk-comment">/* Primary Cargo/primaryCargoPrimaryCargo_400  */</span>  <span class="tk-prop">--color-primary-400</span>: <span class="tk-val">#AABEFF</span>;
+<span class="tk-comment">/* Primary Cargo/primaryCargoPrimaryCargo_300  */</span>  <span class="tk-prop">--color-primary-300</span>: <span class="tk-val">#C3D0FF</span>;
+<span class="tk-comment">/* Primary Cargo/primaryCargoPrimaryCargo_200  */</span>  <span class="tk-prop">--color-primary-200</span>: <span class="tk-val">#DAE2FF</span>;
+<span class="tk-comment">/* Primary Cargo/primaryCargoPrimaryCargo_100  */</span>  <span class="tk-prop">--color-primary-100</span>: <span class="tk-val">#EDF0FF</span>;
+<span class="tk-comment">/* Primary Cargo/primaryCargoPrimaryCargo_50   */</span>  <span class="tk-prop">--color-primary-50</span>:  <span class="tk-val">#F5F7FF</span>;
+
+<span class="tk-comment">/* ── Text ───────────────────────────────────────── */</span>
+
+<span class="tk-comment">/* Text/TEXT_COLOR_TEXT        */</span>  <span class="tk-prop">--color-text</span>:       <span class="tk-val">#28293D</span>;
+<span class="tk-comment">/* Text/TEXT_COLOR_DESCRIPTION */</span>  <span class="tk-prop">--color-text-desc</span>:  <span class="tk-val">#8F90A6</span>;
+<span class="tk-comment">/* Text/TEXT_COLOR_TEXT_WHITE  */</span>  <span class="tk-prop">--color-text-white</span>: <span class="tk-val">#FFFFFF</span>;
+
+<span class="tk-comment">/* ── Light ──────────────────────────────────────── */</span>
+<span class="tk-comment">/* Light/LIGHT_COLOR_LIGHT_BG  */</span>  <span class="tk-prop">--color-bg</span>: <span class="tk-val">#FFFFFF</span>;</code></pre>
+        </div>
+      </section>
+
+      <!-- ── TYPOGRAPHY ──────────────────────────────────────── -->
+      <section id="typography" class="ds-section">
+        <h2 class="section-title">Typography</h2>
+        <p class="section-desc">Type scale ใช้ <strong>DB HeaventRounded</strong> สำหรับภาษาไทย และ <strong>Inter</strong> สำหรับภาษาอังกฤษ</p>
+
+        <div class="type-showcase">
+          <div class="type-row-item">
+            <div class="type-meta"><span class="type-tag">Display</span><span class="type-spec">48 / 700 / 1.2</span></div>
+            <div class="type-sample" style="font-size:clamp(28px,5vw,44px);font-weight:800;letter-spacing:-1px;color:var(--text-color);">Design System</div>
+          </div>
+          <div class="type-divider-line"></div>
+          <div class="type-row-item">
+            <div class="type-meta"><span class="type-tag">H1</span><span class="type-spec">32 / 700 / 1.25</span></div>
+            <div class="type-sample" style="font-size:clamp(22px,3.5vw,30px);font-weight:700;color:var(--text-color);">Heading 1 — หัวข้อหลัก</div>
+          </div>
+          <div class="type-divider-line"></div>
+          <div class="type-row-item">
+            <div class="type-meta"><span class="type-tag">H2</span><span class="type-spec">24 / 600 / 1.3</span></div>
+            <div class="type-sample" style="font-size:clamp(18px,2.5vw,22px);font-weight:600;color:var(--text-color);">Heading 2 — หัวข้อรอง</div>
+          </div>
+          <div class="type-divider-line"></div>
+          <div class="type-row-item">
+            <div class="type-meta"><span class="type-tag">Body L</span><span class="type-spec">16 / 400 / 1.6</span></div>
+            <div class="type-sample" style="font-size:16px;color:var(--text-color);">Body Large — ข้อความเนื้อหาหลักสำหรับการอ่าน</div>
+          </div>
+          <div class="type-divider-line"></div>
+          <div class="type-row-item">
+            <div class="type-meta"><span class="type-tag">Body M</span><span class="type-spec">14 / 400 / 1.6</span></div>
+            <div class="type-sample" style="font-size:14px;color:var(--text-color);">Body Medium — ข้อความทั่วไปใน UI</div>
+          </div>
+          <div class="type-divider-line"></div>
+          <div class="type-row-item">
+            <div class="type-meta"><span class="type-tag">Button</span><span class="type-spec">14 / 600 / 1</span></div>
+            <div class="type-sample" style="font-size:14px;font-weight:600;letter-spacing:.2px;color:var(--text-color);">BUTTON LABEL</div>
+          </div>
+          <div class="type-divider-line"></div>
+          <div class="type-row-item">
+            <div class="type-meta"><span class="type-tag">Caption</span><span class="type-spec">11 / 400 / 1.4</span></div>
+            <div class="type-sample" style="font-size:11px;color:var(--text-description);">Caption — คำอธิบายขนาดเล็กใต้ element</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── SPACING ─────────────────────────────────────────── -->
+      <section id="spacing" class="ds-section">
+        <h2 class="section-title">Spacing</h2>
+        <p class="section-desc">Base unit <strong>4px</strong> — spacing scale ใช้ multiplier 1× ถึง 16×</p>
+
+        <div class="spacing-visual">
+          <div class="sp-row sp-head">
+            <span>Token</span><span>rem</span><span>px</span><span>Visual</span>
+          </div>
+          <div class="sp-row"><code>--space-1</code><span>0.25</span><span>4px</span><div class="sp-bar" style="width:4px"></div></div>
+          <div class="sp-row"><code>--space-2</code><span>0.5</span><span>8px</span><div class="sp-bar" style="width:8px"></div></div>
+          <div class="sp-row"><code>--space-3</code><span>0.75</span><span>12px</span><div class="sp-bar" style="width:12px"></div></div>
+          <div class="sp-row"><code>--space-4</code><span>1</span><span>16px</span><div class="sp-bar" style="width:16px"></div></div>
+          <div class="sp-row"><code>--space-5</code><span>1.25</span><span>20px</span><div class="sp-bar" style="width:20px"></div></div>
+          <div class="sp-row"><code>--space-6</code><span>1.5</span><span>24px</span><div class="sp-bar" style="width:24px"></div></div>
+          <div class="sp-row"><code>--space-8</code><span>2</span><span>32px</span><div class="sp-bar" style="width:32px"></div></div>
+          <div class="sp-row"><code>--space-10</code><span>2.5</span><span>40px</span><div class="sp-bar" style="width:40px"></div></div>
+          <div class="sp-row"><code>--space-12</code><span>3</span><span>48px</span><div class="sp-bar" style="width:48px"></div></div>
+          <div class="sp-row"><code>--space-16</code><span>4</span><span>64px</span><div class="sp-bar" style="width:64px"></div></div>
+        </div>
+      </section>
+
+      <!-- ── BUTTON ──────────────────────────────────────────── -->
+      <section id="buttons" class="ds-section">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Button <span class="title-badge">Updated</span></h2>
+            <p class="section-desc">Primary action component — ใช้ variant ที่เหมาะสมกับ context</p>
+          </div>
+          <a href="https://www.figma.com/design/1oi1KLBMz6qVDhAOn7kQOf?node-id=button" target="_blank" class="figma-ref-btn">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z"/><path d="M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z"/><path d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 1 1-7 0z"/><path d="M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 1 1-7 0z"/><path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z"/></svg>
+            Figma
+          </a>
+        </div>
+
+        <div class="comp-block">
+          <div class="comp-label">Variants</div>
+          <div class="comp-preview">
+            <button class="btn btn-primary">Primary</button>
+            <button class="btn btn-secondary">Secondary</button>
+            <button class="btn btn-ghost">Ghost</button>
+            <button class="btn btn-danger">Danger</button>
+            <button class="btn btn-gradient">Gradient</button>
+          </div>
+        </div>
+
+        <div class="comp-block">
+          <div class="comp-label">Sizes</div>
+          <div class="comp-preview" style="align-items:center">
+            <button class="btn btn-primary btn-sm">Small</button>
+            <button class="btn btn-primary">Medium</button>
+            <button class="btn btn-primary btn-lg">Large</button>
+          </div>
+        </div>
+
+        <div class="comp-block">
+          <div class="comp-label">States</div>
+          <div class="comp-preview">
+            <button class="btn btn-primary">Default</button>
+            <button class="btn btn-primary btn-force-hover">Hover</button>
+            <button class="btn btn-primary" disabled>Disabled</button>
+            <button class="btn btn-primary btn-loading-demo">
+              <span class="spin"></span>Loading
+            </button>
+          </div>
+        </div>
+
+        <div class="comp-block">
+          <div class="comp-label">With Icon</div>
+          <div class="comp-preview">
+            <button class="btn btn-primary">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Add Item
+            </button>
+            <button class="btn btn-secondary">
+              Download
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            </button>
+            <button class="btn btn-ghost btn-icon">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="codeblock">
+          <div class="cb-header"><span class="cb-lang">HTML</span><button class="cb-copy" data-copy='<button class="btn btn-primary">Primary</button>
+<button class="btn btn-secondary">Secondary</button>
+<button class="btn btn-ghost">Ghost</button>
+<button class="btn btn-danger">Danger</button>
+
+<!-- Sizes -->
+<button class="btn btn-primary btn-sm">Small</button>
+<button class="btn btn-primary btn-lg">Large</button>
+
+<!-- Disabled -->
+<button class="btn btn-primary" disabled>Disabled</button>'>Copy</button></div>
+          <pre><code>&lt;<span class="tk-tag">button</span> <span class="tk-attr">class</span>=<span class="tk-str">"btn btn-primary"</span>&gt;Primary&lt;/<span class="tk-tag">button</span>&gt;
+&lt;<span class="tk-tag">button</span> <span class="tk-attr">class</span>=<span class="tk-str">"btn btn-secondary"</span>&gt;Secondary&lt;/<span class="tk-tag">button</span>&gt;
+&lt;<span class="tk-tag">button</span> <span class="tk-attr">class</span>=<span class="tk-str">"btn btn-ghost"</span>&gt;Ghost&lt;/<span class="tk-tag">button</span>&gt;
+
+<span class="tk-comment">&lt;!-- Sizes --&gt;</span>
+&lt;<span class="tk-tag">button</span> <span class="tk-attr">class</span>=<span class="tk-str">"btn btn-primary btn-sm"</span>&gt;Small&lt;/<span class="tk-tag">button</span>&gt;
+&lt;<span class="tk-tag">button</span> <span class="tk-attr">class</span>=<span class="tk-str">"btn btn-primary btn-lg"</span>&gt;Large&lt;/<span class="tk-tag">button</span>&gt;
+
+<span class="tk-comment">&lt;!-- Disabled --&gt;</span>
+&lt;<span class="tk-tag">button</span> <span class="tk-attr">class</span>=<span class="tk-str">"btn btn-primary"</span> <span class="tk-attr">disabled</span>&gt;Disabled&lt;/<span class="tk-tag">button</span>&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- ── BADGE ───────────────────────────────────────────── -->
+      <section id="badge" class="ds-section">
+        <h2 class="section-title">Badge</h2>
+        <p class="section-desc">แสดง status, label, หรือ count ใน compact form</p>
+
+        <div class="comp-block">
+          <div class="comp-label">Filled</div>
+          <div class="comp-preview" style="flex-wrap:wrap;gap:8px">
+            <span class="badge badge-primary">Primary</span>
+            <span class="badge badge-success">Success</span>
+            <span class="badge badge-warning">Warning</span>
+            <span class="badge badge-error">Error</span>
+            <span class="badge badge-info">Info</span>
+            <span class="badge badge-neutral">Neutral</span>
+          </div>
+        </div>
+
+        <div class="comp-block">
+          <div class="comp-label">Outlined</div>
+          <div class="comp-preview" style="flex-wrap:wrap;gap:8px">
+            <span class="badge badge-ol-primary">Primary</span>
+            <span class="badge badge-ol-success">Success</span>
+            <span class="badge badge-ol-warning">Warning</span>
+            <span class="badge badge-ol-error">Error</span>
+          </div>
+        </div>
+
+        <div class="comp-block">
+          <div class="comp-label">With Dot</div>
+          <div class="comp-preview" style="flex-wrap:wrap;gap:8px">
+            <span class="badge badge-success badge-dot">Active</span>
+            <span class="badge badge-error badge-dot">Inactive</span>
+            <span class="badge badge-warning badge-dot">Pending</span>
+            <span class="badge badge-info badge-dot">Processing</span>
+          </div>
+        </div>
+        <div class="codeblock">
+          <div class="cb-header"><span class="cb-lang">HTML</span><button class="cb-copy" data-copy='<span class="badge badge-primary">Primary</span>
+<span class="badge badge-success badge-dot">Active</span>
+<span class="badge badge-ol-primary">Outlined</span>'>Copy</button></div>
+          <pre><code>&lt;<span class="tk-tag">span</span> <span class="tk-attr">class</span>=<span class="tk-str">"badge badge-primary"</span>&gt;Primary&lt;/<span class="tk-tag">span</span>&gt;
+&lt;<span class="tk-tag">span</span> <span class="tk-attr">class</span>=<span class="tk-str">"badge badge-success badge-dot"</span>&gt;Active&lt;/<span class="tk-tag">span</span>&gt;
+&lt;<span class="tk-tag">span</span> <span class="tk-attr">class</span>=<span class="tk-str">"badge badge-ol-primary"</span>&gt;Outlined&lt;/<span class="tk-tag">span</span>&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- ── AVATAR ──────────────────────────────────────────── -->
+      <section id="avatar" class="ds-section">
+        <h2 class="section-title">Avatar</h2>
+        <p class="section-desc">แสดง user identity ด้วย initials หรือ profile image</p>
+
+        <div class="comp-block">
+          <div class="comp-label">Sizes</div>
+          <div class="comp-preview" style="align-items:center;gap:16px">
+            <div class="ava ava-xs" title="XS — 24px">NK</div>
+            <div class="ava ava-sm" title="SM — 32px">NK</div>
+            <div class="ava ava-md" title="MD — 40px">NK</div>
+            <div class="ava ava-lg" title="LG — 52px">NK</div>
+            <div class="ava ava-xl" title="XL — 64px">NK</div>
+          </div>
+        </div>
+
+        <div class="comp-block">
+          <div class="comp-label">Colors</div>
+          <div class="comp-preview" style="align-items:center;gap:12px">
+            <div class="ava ava-md" style="background:var(--primary-800)">NK</div>
+            <div class="ava ava-md" style="background:var(--primary-600)">JD</div>
+            <div class="ava ava-md" style="background:#22C55E">AB</div>
+            <div class="ava ava-md" style="background:#F59E0B">XY</div>
+            <div class="ava ava-md" style="background:#EF4444">TK</div>
+            <div class="ava ava-md" style="background:#8B5CF6">WR</div>
+          </div>
+        </div>
+
+        <div class="comp-block">
+          <div class="comp-label">Group</div>
+          <div class="comp-preview">
+            <div class="ava-group">
+              <div class="ava ava-sm" style="background:var(--primary-950)">NK</div>
+              <div class="ava ava-sm" style="background:var(--primary-700)">JD</div>
+              <div class="ava ava-sm" style="background:#22C55E">AB</div>
+              <div class="ava ava-sm" style="background:#F59E0B">XY</div>
+              <div class="ava ava-sm ava-more">+5</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="codeblock">
+          <div class="cb-header"><span class="cb-lang">HTML</span><button class="cb-copy" data-copy='<div class="ava ava-md">NK</div>
+
+<!-- Group -->
+<div class="ava-group">
+  <div class="ava ava-sm">NK</div>
+  <div class="ava ava-sm">JD</div>
+  <div class="ava ava-sm ava-more">+3</div>
+</div>'>Copy</button></div>
+          <pre><code>&lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">"ava ava-md"</span>&gt;NK&lt;/<span class="tk-tag">div</span>&gt;
+
+<span class="tk-comment">&lt;!-- Group --&gt;</span>
+&lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">"ava-group"</span>&gt;
+  &lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">"ava ava-sm"</span>&gt;NK&lt;/<span class="tk-tag">div</span>&gt;
+  &lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">"ava ava-sm"</span>&gt;JD&lt;/<span class="tk-tag">div</span>&gt;
+  &lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">"ava ava-sm ava-more"</span>&gt;+3&lt;/<span class="tk-tag">div</span>&gt;
+&lt;/<span class="tk-tag">div</span>&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- ── TAB ────────────────────────────────────────────── -->
+      <section id="tabs" class="ds-section">
+        <h2 class="section-title">Tab</h2>
+        <p class="section-desc">Navigation ภายใน page หรือ content switcher</p>
+
+        <div class="comp-block">
+          <div class="comp-label">Underline (Default)</div>
+          <div class="comp-preview" style="flex-direction:column;align-items:flex-start;padding-bottom:0">
+            <div class="tabs-ul" role="tablist">
+              <button class="tab-ul tab-ul-active" role="tab">Overview</button>
+              <button class="tab-ul" role="tab">Components</button>
+              <button class="tab-ul" role="tab">Foundation</button>
+              <button class="tab-ul" role="tab" disabled>Disabled</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="comp-block">
+          <div class="comp-label">Pill</div>
+          <div class="comp-preview">
+            <div class="tabs-pill" role="tablist">
+              <button class="tab-pill tab-pill-active" role="tab">All</button>
+              <button class="tab-pill" role="tab">Active</button>
+              <button class="tab-pill" role="tab">Pending</button>
+              <button class="tab-pill" role="tab">Closed</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="codeblock">
+          <div class="cb-header"><span class="cb-lang">HTML</span><button class="cb-copy" data-copy='<!-- Underline Tab -->
+<div class="tabs-ul" role="tablist">
+  <button class="tab-ul tab-ul-active" role="tab">Tab 1</button>
+  <button class="tab-ul" role="tab">Tab 2</button>
+</div>
+
+<!-- Pill Tab -->
+<div class="tabs-pill" role="tablist">
+  <button class="tab-pill tab-pill-active" role="tab">All</button>
+  <button class="tab-pill" role="tab">Active</button>
+</div>'>Copy</button></div>
+          <pre><code><span class="tk-comment">&lt;!-- Underline Tab --&gt;</span>
+&lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">"tabs-ul"</span> <span class="tk-attr">role</span>=<span class="tk-str">"tablist"</span>&gt;
+  &lt;<span class="tk-tag">button</span> <span class="tk-attr">class</span>=<span class="tk-str">"tab-ul tab-ul-active"</span>&gt;Tab 1&lt;/<span class="tk-tag">button</span>&gt;
+  &lt;<span class="tk-tag">button</span> <span class="tk-attr">class</span>=<span class="tk-str">"tab-ul"</span>&gt;Tab 2&lt;/<span class="tk-tag">button</span>&gt;
+&lt;/<span class="tk-tag">div</span>&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- ── INPUT ──────────────────────────────────────────── -->
+      <section id="inputs" class="ds-section">
+        <h2 class="section-title">Input</h2>
+        <p class="section-desc">Form elements: TextFieldInput และ TextAreaInput</p>
+
+        <div class="comp-block">
+          <div class="comp-label">Text Field States</div>
+          <div class="comp-preview" style="flex-direction:column;gap:14px;align-items:stretch;max-width:380px">
+            <div class="field-group">
+              <label class="field-label">Default</label>
+              <input class="field" type="text" placeholder="Enter text..." />
+            </div>
+            <div class="field-group">
+              <label class="field-label">With Icon</label>
+              <div class="field-icon-wrap">
+                <svg class="field-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input class="field field-pad-icon" type="text" placeholder="Search components..." />
+              </div>
+            </div>
+            <div class="field-group">
+              <label class="field-label">Error</label>
+              <input class="field field-error" type="text" value="invalid@" />
+              <span class="field-msg field-msg-error">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                กรุณากรอกข้อมูลให้ถูกต้อง
+              </span>
+            </div>
+            <div class="field-group">
+              <label class="field-label">Success</label>
+              <input class="field field-success" type="text" value="nuttarika@ctw.com" />
+              <span class="field-msg field-msg-success">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                ข้อมูลถูกต้อง
+              </span>
+            </div>
+            <div class="field-group">
+              <label class="field-label">Disabled</label>
+              <input class="field" type="text" placeholder="Disabled field" disabled />
+            </div>
+          </div>
+        </div>
+
+        <div class="comp-block">
+          <div class="comp-label">Text Area</div>
+          <div class="comp-preview" style="flex-direction:column;align-items:stretch;max-width:380px">
+            <div class="field-group">
+              <label class="field-label">Message</label>
+              <textarea class="field field-textarea" placeholder="กรอกข้อความ..."></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="codeblock">
+          <div class="cb-header"><span class="cb-lang">HTML</span><button class="cb-copy" data-copy='<div class="field-group">
+  <label class="field-label">Label</label>
+  <input class="field" type="text" placeholder="Placeholder..." />
+</div>
+
+<div class="field-group">
+  <label class="field-label">Message</label>
+  <textarea class="field field-textarea" placeholder="Message..."></textarea>
+</div>'>Copy</button></div>
+          <pre><code>&lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">"field-group"</span>&gt;
+  &lt;<span class="tk-tag">label</span> <span class="tk-attr">class</span>=<span class="tk-str">"field-label"</span>&gt;Label&lt;/<span class="tk-tag">label</span>&gt;
+  &lt;<span class="tk-tag">input</span> <span class="tk-attr">class</span>=<span class="tk-str">"field"</span> <span class="tk-attr">type</span>=<span class="tk-str">"text"</span> <span class="tk-attr">placeholder</span>=<span class="tk-str">"Placeholder..."</span> /&gt;
+&lt;/<span class="tk-tag">div</span>&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- ── DROPDOWN ───────────────────────────────────────── -->
+      <section id="dropdown" class="ds-section">
+        <h2 class="section-title">Dropdown</h2>
+        <p class="section-desc">DropdownTrigger พร้อม DropdownListItem สำหรับ selection และ action menu</p>
+
+        <div class="comp-block">
+          <div class="comp-label">Dropdown Trigger</div>
+          <div class="comp-preview" style="gap:16px;align-items:flex-start;min-height:220px">
+
+            <div class="dd-wrap" id="dd1">
+              <button class="dd-trigger" onclick="toggleDD('dd1')">
+                <span class="dd-selected-text">Select option</span>
+                <svg class="dd-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="dd-menu" id="dd1-menu">
+                <div class="dd-item dd-item-active">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  Option A
+                </div>
+                <div class="dd-item">Option B</div>
+                <div class="dd-item">Option C</div>
+                <div class="dd-sep"></div>
+                <div class="dd-item dd-item-danger">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+                  Delete
+                </div>
+              </div>
+            </div>
+
+            <div class="dd-wrap" id="dd2">
+              <button class="dd-trigger dd-trigger-icon" onclick="toggleDD('dd2')" aria-label="More actions">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg>
+              </button>
+              <div class="dd-menu" id="dd2-menu">
+                <div class="dd-item">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                  Edit
+                </div>
+                <div class="dd-item">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                  Duplicate
+                </div>
+                <div class="dd-sep"></div>
+                <div class="dd-item dd-item-danger">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+                  Delete
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="codeblock">
+          <div class="cb-header"><span class="cb-lang">HTML</span><button class="cb-copy" data-copy='<div class="dd-wrap">
+  <button class="dd-trigger">Select option ▾</button>
+  <div class="dd-menu">
+    <div class="dd-item">Option A</div>
+    <div class="dd-item">Option B</div>
+    <div class="dd-sep"></div>
+    <div class="dd-item dd-item-danger">Delete</div>
+  </div>
+</div>'>Copy</button></div>
+          <pre><code>&lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">"dd-wrap"</span>&gt;
+  &lt;<span class="tk-tag">button</span> <span class="tk-attr">class</span>=<span class="tk-str">"dd-trigger"</span>&gt;Select option ▾&lt;/<span class="tk-tag">button</span>&gt;
+  &lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">"dd-menu"</span>&gt;
+    &lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">"dd-item"</span>&gt;Option A&lt;/<span class="tk-tag">div</span>&gt;
+    &lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">"dd-sep"</span>&gt;&lt;/<span class="tk-tag">div</span>&gt;
+    &lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">"dd-item dd-item-danger"</span>&gt;Delete&lt;/<span class="tk-tag">div</span>&gt;
+  &lt;/<span class="tk-tag">div</span>&gt;
+&lt;/<span class="tk-tag">div</span>&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- ── DIVIDER ─────────────────────────────────────────── -->
+      <section id="divider" class="ds-section">
+        <h2 class="section-title">Divider</h2>
+        <p class="section-desc">แบ่ง sections, list items หรือ layout areas</p>
+
+        <div class="comp-block">
+          <div class="comp-label">Horizontal</div>
+          <div class="comp-preview" style="flex-direction:column;gap:16px;width:100%">
+            <p style="font-size:14px;color:var(--text-description)">Section A</p>
+            <div class="dv-h"></div>
+            <p style="font-size:14px;color:var(--text-description)">Section B</p>
+          </div>
+        </div>
+
+        <div class="comp-block">
+          <div class="comp-label">With Label</div>
+          <div class="comp-preview" style="flex-direction:column;gap:16px;width:100%">
+            <p style="font-size:14px;color:var(--text-description)">Content above</p>
+            <div class="dv-label"><span>OR</span></div>
+            <p style="font-size:14px;color:var(--text-description)">Content below</p>
+          </div>
+        </div>
+
+        <div class="comp-block">
+          <div class="comp-label">Vertical</div>
+          <div class="comp-preview" style="align-items:center;height:40px;gap:16px">
+            <span style="font-size:14px;color:var(--text-color)">Item A</span>
+            <div class="dv-v"></div>
+            <span style="font-size:14px;color:var(--text-color)">Item B</span>
+            <div class="dv-v"></div>
+            <span style="font-size:14px;color:var(--text-color)">Item C</span>
+          </div>
+        </div>
+
+        <div class="codeblock">
+          <div class="cb-header"><span class="cb-lang">HTML</span><button class="cb-copy" data-copy='<!-- Horizontal -->
+<div class="dv-h"></div>
+
+<!-- With label -->
+<div class="dv-label"><span>OR</span></div>
+
+<!-- Vertical -->
+<div class="dv-v"></div>'>Copy</button></div>
+          <pre><code><span class="tk-comment">&lt;!-- Horizontal --&gt;</span>
+&lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">"dv-h"</span>&gt;&lt;/<span class="tk-tag">div</span>&gt;
+
+<span class="tk-comment">&lt;!-- With label --&gt;</span>
+&lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">"dv-label"</span>&gt;&lt;<span class="tk-tag">span</span>&gt;OR&lt;/<span class="tk-tag">span</span>&gt;&lt;/<span class="tk-tag">div</span>&gt;
+
+<span class="tk-comment">&lt;!-- Vertical --&gt;</span>
+&lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">"dv-v"</span>&gt;&lt;/<span class="tk-tag">div</span>&gt;</code></pre>
+        </div>
+      </section>
+
+    </main>
+  </div><!-- /layout-main -->
+
+  <!-- Toast -->
+  <div class="toast" id="toast">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+    <span id="toast-msg">Copied!</span>
+  </div>
+
+  <!-- ╔══════════════════════════════════════╗ -->
+  <!-- ║          SEARCH MODAL               ║ -->
+  <!-- ╚══════════════════════════════════════╝ -->
+  <div class="search-modal-backdrop" id="searchBackdrop" aria-hidden="true">
+    <div class="search-modal" role="dialog" aria-modal="true" aria-label="Search">
+
+      <!-- Input row -->
+      <div class="sm-input-row">
+        <svg class="sm-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input
+          class="sm-input"
+          id="searchInput"
+          type="text"
+          placeholder="ค้นหา component, color, token..."
+          autocomplete="off"
+          spellcheck="false"
+          aria-label="Search"
+        />
+        <button class="sm-clear" id="searchClear" aria-label="Clear">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <kbd class="sm-esc">Esc</kbd>
+      </div>
+
+      <!-- Results -->
+      <div class="sm-body" id="searchBody">
+
+        <!-- Empty state (default) -->
+        <div class="sm-empty" id="searchEmpty">
+          <div class="sm-empty-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".3"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+          <p>พิมพ์เพื่อค้นหา components, colors, tokens...</p>
+          <div class="sm-hints">
+            <span><kbd>↑</kbd><kbd>↓</kbd> Navigate</span>
+            <span><kbd>↵</kbd> Select</span>
+            <span><kbd>Esc</kbd> Close</span>
+          </div>
+        </div>
+
+        <!-- No results -->
+        <div class="sm-no-result" id="searchNoResult" style="display:none">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".3"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          <p>ไม่พบผลลัพธ์สำหรับ <strong id="searchNoResultQuery"></strong></p>
+        </div>
+
+        <!-- Results list -->
+        <div id="searchResults" style="display:none"></div>
+
+      </div>
+
+      <!-- Footer -->
+      <div class="sm-footer">
+        <span class="sm-footer-item">
+          <kbd>⌘K</kbd> Open search
+        </span>
+        <span class="sm-footer-item">
+          <kbd>↵</kbd> to navigate
+        </span>
+        <span class="sm-footer-sep"></span>
+        <span class="sm-footer-item sm-footer-right">
+          CTW Cargo Design System
+        </span>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

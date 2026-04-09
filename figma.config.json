@@ -1,0 +1,67 @@
+{
+  "figmaFileKey": "1oi1KLBMz6qVDhAOn7kQOf",
+  "figmaUrl": "https://www.figma.com/design/1oi1KLBMz6qVDhAOn7kQOf/Design-System-%7C-CTW",
+  "codeConnect": {
+    "components": [
+      {
+        "name": "Button",
+        "figmaComponentKey": "8e959930b6c32d725d5a12d07cdb319dd631049b",
+        "file": "components/Button.html",
+        "variants": {
+          "Variant": ["primary", "secondary", "ghost", "danger"],
+          "Size": ["sm", "md", "lg"]
+        }
+      },
+      {
+        "name": "Button V.2",
+        "figmaComponentKey": "93f5c206c451dc46e4b6aad738c3cbeec65edcce",
+        "file": "components/Button.html"
+      },
+      {
+        "name": "Badge",
+        "figmaComponentKey": "b6f127961ec14078d5173a0105d8a421d506ab26",
+        "file": "components/Badge.html"
+      },
+      {
+        "name": "Avatar",
+        "figmaComponentKey": "6bc34e66e7a26e863ce1ed698b5d1aec0b3cdd9c",
+        "file": "components/Avatar.html"
+      },
+      {
+        "name": "Tab",
+        "figmaComponentKey": "799a6c443c5d1547ca8cc26702837a2517bbe54d",
+        "file": "components/Tab.html"
+      },
+      {
+        "name": "TextFieldInput",
+        "figmaComponentKey": "d00787d1101ed21fb55e4dd274576c2bda4eef98",
+        "file": "components/Input.html"
+      },
+      {
+        "name": "TextAreaInput",
+        "figmaComponentKey": "0b551fff0e4fddec0f283b6b4cce9d3a8c7bf7b5",
+        "file": "components/Input.html"
+      },
+      {
+        "name": "DropdownTrigger",
+        "figmaComponentKey": "3983c5d566c843205cd9d39b5949c96836a11b56",
+        "file": "components/Dropdown.html"
+      }
+    ],
+    "tokens": {
+      "colors": {
+        "primary-800": "#3B509E",
+        "primary-700": "#546BC0",
+        "primary-600": "#7189E2",
+        "primary-500": "#8FA6FF",
+        "primary-200": "#DAE2FF",
+        "text-color": "#28293D",
+        "text-description": "#8F90A6"
+      }
+    }
+  },
+  "vscodeExtension": {
+    "id": "figma.figma-vscode-extension",
+    "marketplace": "https://marketplace.visualstudio.com/items?itemName=figma.figma-vscode-extension"
+  }
+}
