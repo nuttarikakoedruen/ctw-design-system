@@ -593,6 +593,47 @@ input, textarea { font-family: inherit; }
   display: grid; grid-template-columns: 1fr 1fr; gap: 0 24px;
 }
 
+/* ── Semantic Color Grid ─────────────────────────────────────── */
+.semantic-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+  margin-bottom: 4px;
+}
+.semantic-card {
+  border: 1px solid var(--border); border-radius: var(--r-lg); overflow: hidden;
+  cursor: default;
+}
+.semantic-card-title {
+  font-size: 11px; font-weight: 700; padding: 7px 10px;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 6px;
+  background: var(--bg);
+}
+.semantic-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.semantic-strip { display: flex; flex-direction: column; }
+.ss-item {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 4px 10px; gap: 6px; cursor: pointer;
+  transition: opacity .12s;
+}
+.ss-item:hover { opacity: .8; }
+.ss-color { width: 16px; height: 16px; border-radius: var(--r-sm); flex-shrink: 0; border: 1px solid rgba(0,0,0,.07); }
+.ss-name { font-size: 10px; color: var(--tx-2); flex: 1; }
+.ss-hex { font-size: 9.5px; font-family: var(--mono); color: var(--tx-3); }
+
+/* ── Neutral Scale ───────────────────────────────────────────── */
+.neutral-strip { display: flex; border-radius: var(--r-lg); overflow: hidden; margin-bottom: 4px; }
+.neutral-item {
+  flex: 1; height: 44px; cursor: pointer; position: relative;
+  display: flex; align-items: flex-end; justify-content: center; padding-bottom: 5px;
+  transition: flex .15s;
+}
+.neutral-item:hover { flex: 1.4; }
+.neutral-label {
+  font-size: 9px; font-weight: 700; opacity: 0;
+  transition: opacity .15s; white-space: nowrap;
+}
+.neutral-item:hover .neutral-label { opacity: 1; }
+
 /* Style reference tabs in code block */
 .color-ref-tabs {
   display: flex; gap: 2px; margin-bottom: 16px;
@@ -1246,6 +1287,7 @@ button.search-box {
   .page-content { padding: 24px 20px 60px; }
   .qnav-grid { grid-template-columns: 1fr; }
   .color-row-2 { grid-template-columns: 1fr; }
+  .semantic-grid { grid-template-columns: 1fr 1fr; }
 
   .type-row-item { flex-wrap: wrap; }
   .type-meta { min-width: unset; flex-direction: row; align-items: center; gap: 8px; }

@@ -103,6 +103,12 @@ document.querySelectorAll('.cb-copy').forEach(btn => {
   btn.addEventListener('click', () => copyText(btn.dataset.copy, btn));
 });
 
+// Semantic / neutral item click (inline onclick handler)
+function copyHex(el) {
+  const hex = el.dataset.hex;
+  if (hex) { copyText(hex); showToast(`Copied ${hex}`); }
+}
+
 // Color swatch click — copy hex if available, else copy Figma style name
 document.querySelectorAll('.swatch').forEach(swatch => {
   swatch.addEventListener('click', () => {
