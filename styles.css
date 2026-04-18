@@ -681,6 +681,114 @@ input, textarea { font-family: inherit; }
   height: 1px; background: var(--border);
 }
 
+/* ── Typography Groups (Figma Text Styles) ───────────────────── */
+.type-font-row {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+.type-font-badge {
+  display: inline-flex; align-items: center;
+  padding: 3px 12px; border-radius: 20px;
+  font-size: 12px; font-weight: 600; font-family: var(--mono);
+  background: var(--p-100); color: var(--p-800);
+  border: 1px solid var(--p-200);
+}
+.type-font-rounded {
+  background: var(--bg-2); color: var(--tx-2);
+  border-color: var(--border);
+}
+.type-font-note {
+  font-size: 11px; color: var(--tx-3); font-style: italic;
+}
+
+.type-group {
+  margin-bottom: 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+}
+.type-group-hd {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 16px;
+  background: var(--bg-2);
+  border-bottom: 1px solid var(--border);
+}
+.tg-label {
+  font-size: 13px; font-weight: 700; color: var(--tx);
+  min-width: 52px;
+}
+.tg-count {
+  font-size: 11px; font-family: var(--mono);
+  background: var(--p-100); color: var(--p-700);
+  padding: 1px 8px; border-radius: 20px;
+}
+.tg-sizes {
+  font-size: 11px; color: var(--tx-3); font-family: var(--mono);
+  margin-left: auto;
+}
+
+/* Type scale block — left preview + right variants */
+.tsb {
+  display: grid; grid-template-columns: 220px 1fr;
+  border-bottom: 1px solid var(--border);
+}
+.tsb:last-child { border-bottom: none; }
+.tsb-left {
+  display: flex; flex-direction: column; justify-content: center;
+  gap: 6px; padding: 14px 20px;
+  border-right: 1px solid var(--border);
+  background: var(--bg-1);
+  min-height: 80px;
+}
+.tsb-px {
+  font-size: 11px; font-family: var(--mono); font-weight: 700;
+  color: var(--p-600); letter-spacing: 0.5px;
+}
+.tsb-px::after { content: 'px'; font-weight: 400; color: var(--tx-3); margin-left: 1px; }
+.tsb-sample {
+  color: var(--tx);
+  font-family: 'Noto Sans Thai', 'Sarabun', 'Prompt', sans-serif;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.tsb-right { padding: 4px 0; }
+
+/* Variant row */
+.tsv-row {
+  display: flex; align-items: center; gap: 8px;
+  padding: 5px 14px;
+  border-bottom: 1px solid var(--bg-2);
+  cursor: pointer; transition: background .12s;
+  position: relative;
+}
+.tsv-row:last-child { border-bottom: none; }
+.tsv-row:hover { background: var(--p-50); }
+.tsv-row:hover::after {
+  content: 'copy'; font-size: 9px; font-weight: 600;
+  color: var(--p-500); margin-left: auto; flex-shrink: 0;
+  padding: 1px 6px; background: var(--p-100); border-radius: 10px;
+}
+.tsv-path {
+  font-size: 11px; font-family: var(--mono); color: var(--tx-2);
+  min-width: 190px; flex-shrink: 0;
+}
+.tsv-fam {
+  font-size: 11px; color: var(--tx-3);
+  min-width: 110px; flex-shrink: 0;
+}
+.tsv-rd { color: var(--p-500); }
+.tsv-wt {
+  font-size: 10px; font-weight: 600;
+  padding: 1px 7px; border-radius: 4px;
+  background: var(--bg-2); color: var(--tx-3);
+  min-width: 54px; text-align: center; flex-shrink: 0;
+}
+.tsv-bold { background: var(--p-100); color: var(--p-700); }
+.tsv-black { background: var(--p-800); color: #fff; }
+.tsv-lh {
+  font-size: 10px; font-family: var(--mono);
+  color: var(--tx-3); margin-left: auto; flex-shrink: 0;
+}
+
 /* ── Spacing Visual ──────────────────────────────────────────── */
 .spacing-visual {
   border: 1px solid var(--border);
@@ -1291,6 +1399,12 @@ button.search-box {
 
   .type-row-item { flex-wrap: wrap; }
   .type-meta { min-width: unset; flex-direction: row; align-items: center; gap: 8px; }
+
+  .tsb { grid-template-columns: 1fr; }
+  .tsb-left { border-right: none; border-bottom: 1px solid var(--border); min-height: unset; }
+  .tsv-path { min-width: unset; }
+  .tsv-fam { display: none; }
+  .tg-sizes { display: none; }
 
   .sp-row { grid-template-columns: 100px 44px 44px 1fr; }
 

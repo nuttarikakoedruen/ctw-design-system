@@ -124,6 +124,17 @@ document.querySelectorAll('.swatch').forEach(swatch => {
   });
 });
 
+// Typography variant row click — copy Figma style path
+document.querySelectorAll('.tsv-row').forEach(row => {
+  row.addEventListener('click', () => {
+    const stylePath = row.dataset.style;
+    if (stylePath) {
+      copyText(stylePath);
+      showToast(`Copied: ${stylePath}`);
+    }
+  });
+});
+
 // ── Dropdown ────────────────────────────────────────────────────
 function toggleDD(wrapperId) {
   const wrap = document.getElementById(wrapperId);
