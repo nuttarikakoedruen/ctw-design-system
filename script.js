@@ -313,7 +313,25 @@ const SEARCH_INDEX = [
   { id: 'colors', title: 'LIGHT_COLOR_LIGHT_BG · #FFFFFF', category: 'Color Token',
     desc: 'Light / LIGHT_COLOR_LIGHT_BG · background · --color-bg', tags: ['ffffff','white','background','light bg'], icon: 'color', hex: '#FFFFFF' },
   { id: 'colors', title: 'Gardient — Primary Cargo gradient', category: 'Color Token',
-    desc: 'Primary Cargo / Gardient / Gardient · linear-gradient(135deg, #3B509E, #7189E2)', tags: ['gradient','gardient','primary','blue'], icon: 'color', hex: null, gradient: 'linear-gradient(135deg, #3B509E, #7189E2)' },
+    desc: 'Primary Cargo / Gardient / Gardient · linear-gradient(135deg, #27397c, #4768e2)', tags: ['gradient','gardient','primary','blue'], icon: 'color', hex: null, gradient: 'linear-gradient(135deg, #27397c, #4768e2)' },
+
+  // ── Furcargo
+  { id: 'colors', title: 'Furcargo Primary_800Base · #0e3151', category: 'Color Token',
+    desc: 'Furcargo / Primary / Primary_800Base · base color', tags: ['0e3151','furcargo','primary','800','dark navy'], icon: 'color', hex: '#0e3151' },
+  { id: 'colors', title: 'Furcargo Primary_950 · #0f2543', category: 'Color Token',
+    desc: 'Furcargo / Primary / Primary_950', tags: ['0f2543','furcargo','primary','950'], icon: 'color', hex: '#0f2543' },
+  { id: 'colors', title: 'Furcargo Primary_700 · #304b71', category: 'Color Token',
+    desc: 'Furcargo / Primary / Primary_700', tags: ['304b71','furcargo','primary','700'], icon: 'color', hex: '#304b71' },
+  { id: 'colors', title: 'Furcargo Primary_500 · #647894', category: 'Color Token',
+    desc: 'Furcargo / Primary / Primary_500', tags: ['647894','furcargo','primary','500','steel blue'], icon: 'color', hex: '#647894' },
+  { id: 'colors', title: 'Furcargo Primary_50 · #e5e9ed', category: 'Color Token',
+    desc: 'Furcargo / Primary / Primary_50', tags: ['e5e9ed','furcargo','primary','50','light'], icon: 'color', hex: '#e5e9ed' },
+  { id: 'colors', title: 'Furcargo Secondary_400Base · #ca915f', category: 'Color Token',
+    desc: 'Furcargo / Secondary / Second_400Base · base accent color', tags: ['ca915f','furcargo','secondary','400','brown','sand'], icon: 'color', hex: '#ca915f' },
+  { id: 'colors', title: 'Furcargo Secondary_950 · #443120', category: 'Color Token',
+    desc: 'Furcargo / Secondary / Second_950', tags: ['443120','furcargo','secondary','950','dark brown'], icon: 'color', hex: '#443120' },
+  { id: 'colors', title: 'Furcargo Secondary_50 · #fff7ef', category: 'Color Token',
+    desc: 'Furcargo / Secondary / Second_50', tags: ['fff7ef','furcargo','secondary','50','cream'], icon: 'color', hex: '#fff7ef' },
 ];
 
 /* ── Search engine ────────────────────────────────────────────── */
