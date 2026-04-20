@@ -124,6 +124,86 @@ document.querySelectorAll('.swatch').forEach(swatch => {
   });
 });
 
+// ── Radio Group interaction ──────────────────────────────────────
+document.querySelectorAll('.rdo-btn:not(.rdo-dis):not(.rdo-static)').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const label = btn.closest('[data-radio-group]');
+    const groupId = label?.dataset.radioGroup;
+    if (groupId) {
+      // Deselect all in same group
+      document.querySelectorAll(`[data-radio-group="${groupId}"] .rdo-btn`).forEach(r => {
+        r.classList.remove('selected');
+        r.setAttribute('aria-checked', 'false');
+      });
+    }
+    btn.classList.add('selected');
+    btn.setAttribute('aria-checked', 'true');
+  });
+  btn.addEventListener('keydown', e => {
+    if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); btn.click(); }
+  });
+});
+
+// ── Checkbox interaction ─────────────────────────────────────────
+function syncParentCheckbox(parentId) {
+  const parentLabel = document.getElementById(parentId);
+  if (!parentLabel) return;
+  const parentBtn = parentLabel.querySelector('.chk-btn');
+  const childrenWrap = document.querySelector(`.chk-children[data-parent="${parentId}"]`);
+  if (!childrenWrap || !parentBtn) return;
+  const children = childrenWrap.querySelectorAll('.chk-btn:not(.chk-dis):not(.chk-static)');
+  const checkedCount = [...children].filter(c => c.classList.contains('selected')).length;
+  parentBtn.classList.remove('selected', 'indeterminate');
+  if (checkedCount === 0) {
+    parentBtn.setAttribute('aria-checked', 'false');
+  } else if (checkedCount === children.length) {
+    parentBtn.classList.add('selected');
+    parentBtn.setAttribute('aria-checked', 'true');
+  } else {
+    parentBtn.classList.add('indeterminate');
+    parentBtn.setAttribute('aria-checked', 'mixed');
+  }
+}
+
+// Parent checkbox click — toggles all children
+document.querySelectorAll('.chk-parent .chk-btn:not(.chk-dis):not(.chk-static)').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const parentLabel = btn.closest('.chk-parent');
+    const parentId = parentLabel?.id;
+    const childrenWrap = document.querySelector(`.chk-children[data-parent="${parentId}"]`);
+    if (!childrenWrap) return;
+    const children = childrenWrap.querySelectorAll('.chk-btn:not(.chk-dis):not(.chk-static)');
+    const allChecked = [...children].every(c => c.classList.contains('selected'));
+    children.forEach(c => {
+      if (allChecked) {
+        c.classList.remove('selected');
+        c.setAttribute('aria-checked', 'false');
+      } else {
+        c.classList.add('selected');
+        c.setAttribute('aria-checked', 'true');
+      }
+    });
+    syncParentCheckbox(parentId);
+  });
+  btn.addEventListener('keydown', e => {
+    if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); btn.click(); }
+  });
+});
+
+// Child checkbox click
+document.querySelectorAll('.chk-child .chk-btn:not(.chk-dis):not(.chk-static)').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const isSelected = btn.classList.toggle('selected');
+    btn.classList.remove('indeterminate');
+    btn.setAttribute('aria-checked', String(isSelected));
+    const childrenWrap = btn.closest('.chk-children');
+    if (childrenWrap?.dataset.parent) syncParentCheckbox(childrenWrap.dataset.parent);
+  });
+  btn.addEventListener('keydown', e => {
+    if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); btn.click(); }
+  });
+});
+
 // ── Toggle interaction ───────────────────────────────────────────
 document.querySelectorAll('.tgl-track:not(.tgl-disabled):not(.tgl-static)').forEach(track => {
   track.addEventListener('click', () => {
@@ -560,3 +640,52 @@ function renderResults(q) {
     });
   });
 }
+
+// ── TextArea Rich Text Editor ───────────────────────────────
+/* Toggle toolbar on/off */
+document.querySelectorAll('.tf-rte-toggle').forEach(toggleBtn => {
+  toggleBtn.addEventListener('click', () => {
+    const wrap     = toggleBtn.closest('.tf-wrap');
+    const rteWrap  = wrap.querySelector('.tf-rte-wrap');
+    const bar      = rteWrap.querySelector('.tf-rte-bar');
+    const content  = rteWrap.querySelector('.tf-rte-content');
+    const wasActive = bar.classList.contains('active');
+
+    bar.classList.toggle('active', !wasActive);
+    toggleBtn.classList.toggle('active', !wasActive);
+    toggleBtn.setAttribute('aria-pressed', String(!wasActive));
+
+    const lbl = toggleBtn.querySelector('.tf-rte-lbl');
+    if (!wasActive) {
+      content.contentEditable = 'true';
+      content.focus();
+      if (lbl) lbl.textContent = 'ปิด Editor';
+    } else {
+      content.contentEditable = 'false';
+      if (lbl) lbl.textContent = 'Text Editor';
+    }
+  });
+});
+
+/* Toolbar command buttons — preventDefault keeps focus in the editable area */
+document.querySelectorAll('.tf-rte-btn').forEach(btn => {
+  btn.addEventListener('mousedown', e => {
+    e.preventDefault();
+    document.execCommand(btn.dataset.cmd, false, btn.dataset.val ?? null);
+    syncRteBar(btn.closest('.tf-rte-bar'));
+  });
+});
+
+/* Highlight active toolbar buttons based on cursor state */
+function syncRteBar(bar) {
+  if (!bar) return;
+  bar.querySelectorAll('[data-cmd]').forEach(btn => {
+    try {
+      btn.classList.toggle('tf-rte-active', document.queryCommandState(btn.dataset.cmd));
+    } catch (_) {}
+  });
+}
+
+document.addEventListener('selectionchange', () => {
+  document.querySelectorAll('.tf-rte-bar.active').forEach(bar => syncRteBar(bar));
+});

@@ -121,6 +121,18 @@
           </span>
           Toggle
         </a>
+        <a class="nav-link" href="#radio" data-section="radio">
+          <span class="nav-icon">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4" fill="currentColor" stroke="none"/></svg>
+          </span>
+          Radio
+        </a>
+        <a class="nav-link" href="#checkbox" data-section="checkbox">
+          <span class="nav-icon">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="3"/><polyline points="7 12 10 15 17 8"/></svg>
+          </span>
+          Checkbox
+        </a>
       </div>
     </nav>
 
@@ -1309,69 +1321,343 @@ figma.<span class="tk-fn">connect</span>(Button, <span class="tk-str">"YOUR_FIGM
       <!-- ── INPUT ──────────────────────────────────────────── -->
       <section id="inputs" class="ds-section">
         <h2 class="section-title">Input</h2>
-        <p class="section-desc">Form elements: TextFieldInput และ TextAreaInput</p>
+        <p class="section-desc">TextFieldInput — pill-shaped input พร้อม label, description และ error message</p>
 
+        <!-- States -->
         <div class="comp-block">
-          <div class="comp-label">Text Field States</div>
-          <div class="comp-preview" style="flex-direction:column;gap:14px;align-items:stretch;max-width:380px">
-            <div class="field-group">
-              <label class="field-label">Default</label>
-              <input class="field" type="text" placeholder="Enter text..." />
-            </div>
-            <div class="field-group">
-              <label class="field-label">With Icon</label>
-              <div class="field-icon-wrap">
-                <svg class="field-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                <input class="field field-pad-icon" type="text" placeholder="Search components..." />
+          <div class="comp-label">States</div>
+          <div class="comp-preview" style="flex-wrap:wrap;gap:20px;align-items:flex-start">
+
+            <div class="tf-wrap" style="min-width:200px;flex:1">
+              <div class="tf-label-row"><span class="tf-label">Default</span></div>
+              <div class="tf-input-wrap">
+                <input class="tf-input" type="text" placeholder="Placeholder text" />
               </div>
             </div>
-            <div class="field-group">
-              <label class="field-label">Error</label>
-              <input class="field field-error" type="text" value="invalid@" />
-              <span class="field-msg field-msg-error">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                กรุณากรอกข้อมูลให้ถูกต้อง
-              </span>
+
+            <div class="tf-wrap" style="min-width:200px;flex:1">
+              <div class="tf-label-row"><span class="tf-label">Focus / Typing</span></div>
+              <div class="tf-input-wrap">
+                <input class="tf-input tf-focused" type="text" value="Typing value" />
+              </div>
             </div>
-            <div class="field-group">
-              <label class="field-label">Success</label>
-              <input class="field field-success" type="text" value="nuttarika@ctw.com" />
-              <span class="field-msg field-msg-success">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                ข้อมูลถูกต้อง
-              </span>
+
+            <div class="tf-wrap" style="min-width:200px;flex:1">
+              <div class="tf-label-row"><span class="tf-label">Error</span></div>
+              <div class="tf-input-wrap">
+                <input class="tf-input tf-error" type="text" value="invalid@" />
+              </div>
+              <span class="tf-error-msg">กรุณากรอกข้อมูลให้ถูกต้อง</span>
             </div>
-            <div class="field-group">
-              <label class="field-label">Disabled</label>
-              <input class="field" type="text" placeholder="Disabled field" disabled />
+
+            <div class="tf-wrap" style="min-width:200px;flex:1">
+              <div class="tf-label-row"><span class="tf-label">Disabled</span></div>
+              <div class="tf-input-wrap">
+                <input class="tf-input" type="text" placeholder="Disabled" disabled />
+              </div>
             </div>
+
           </div>
         </div>
 
+        <!-- Label Structure -->
         <div class="comp-block">
-          <div class="comp-label">Text Area</div>
-          <div class="comp-preview" style="flex-direction:column;align-items:stretch;max-width:380px">
-            <div class="field-group">
-              <label class="field-label">Message</label>
-              <textarea class="field field-textarea" placeholder="กรอกข้อความ..."></textarea>
+          <div class="comp-label">Label Structure</div>
+          <div class="comp-preview" style="flex-wrap:wrap;gap:24px;align-items:flex-start">
+
+            <!-- Label + Required -->
+            <div class="tf-wrap" style="min-width:230px;flex:1">
+              <div class="tf-label-row">
+                <span class="tf-label">ชื่อจริง</span>
+                <span class="tf-required">*</span>
+              </div>
+              <div class="tf-input-wrap">
+                <input class="tf-input" type="text" placeholder="กรอกชื่อจริง" />
+              </div>
             </div>
+
+            <!-- Label + Optional + Description -->
+            <div class="tf-wrap" style="min-width:230px;flex:1">
+              <div class="tf-label-row">
+                <span class="tf-label">เบอร์โทรศัพท์</span>
+                <span class="tf-optional">Optional</span>
+              </div>
+              <span class="tf-desc">กรอกเบอร์โทรศัพท์ 10 หลัก</span>
+              <div class="tf-input-wrap">
+                <input class="tf-input" type="text" placeholder="0812345678" />
+              </div>
+            </div>
+
+            <!-- Label + Required + Error -->
+            <div class="tf-wrap" style="min-width:230px;flex:1">
+              <div class="tf-label-row">
+                <span class="tf-label">อีเมล</span>
+                <span class="tf-required">*</span>
+              </div>
+              <div class="tf-input-wrap">
+                <input class="tf-input tf-error" type="email" value="invalid-email" />
+              </div>
+              <span class="tf-error-msg">รูปแบบอีเมลไม่ถูกต้อง</span>
+            </div>
+
           </div>
         </div>
 
+        <!-- Icon Variants -->
+        <div class="comp-block">
+          <div class="comp-label">Icon Variants</div>
+          <div class="comp-preview" style="flex-wrap:wrap;gap:20px;align-items:flex-end">
+
+            <div class="tf-wrap" style="min-width:200px;flex:1">
+              <div class="tf-label-row"><span class="tf-label">Leading Icon</span></div>
+              <div class="tf-input-wrap">
+                <svg class="tf-icon-lead" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input class="tf-input tf-has-lead" type="text" placeholder="ค้นหา..." />
+              </div>
+            </div>
+
+            <div class="tf-wrap" style="min-width:200px;flex:1">
+              <div class="tf-label-row"><span class="tf-label">Trailing Icon</span></div>
+              <div class="tf-input-wrap">
+                <input class="tf-input tf-has-trail" type="text" placeholder="Enter email" />
+                <svg class="tf-icon-trail" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+            </div>
+
+            <div class="tf-wrap" style="min-width:200px;flex:1">
+              <div class="tf-label-row"><span class="tf-label">Both Icons</span></div>
+              <div class="tf-input-wrap">
+                <svg class="tf-icon-lead" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input class="tf-input tf-has-lead tf-has-trail" type="text" placeholder="Search email..." />
+                <svg class="tf-icon-trail" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- TextAreaInput States -->
+        <div class="comp-block">
+          <div class="comp-label">TextAreaInput — States</div>
+          <div class="comp-preview" style="flex-wrap:wrap;gap:20px;align-items:flex-start">
+
+            <div class="tf-wrap" style="min-width:200px;flex:1">
+              <div class="tf-label-row"><span class="tf-label">Default</span></div>
+              <textarea class="tf-textarea" placeholder="Placeholder"></textarea>
+            </div>
+
+            <div class="tf-wrap" style="min-width:200px;flex:1">
+              <div class="tf-label-row"><span class="tf-label">Focus / Typing</span></div>
+              <textarea class="tf-textarea tf-focused">Typing value...</textarea>
+            </div>
+
+            <div class="tf-wrap" style="min-width:200px;flex:1">
+              <div class="tf-label-row"><span class="tf-label">Error</span></div>
+              <textarea class="tf-textarea tf-error" placeholder="Placeholder"></textarea>
+              <span class="tf-error-msg">กรุณากรอกข้อมูลให้ถูกต้อง</span>
+            </div>
+
+            <div class="tf-wrap" style="min-width:200px;flex:1">
+              <div class="tf-label-row"><span class="tf-label">Disabled</span></div>
+              <textarea class="tf-textarea" placeholder="Disabled" disabled></textarea>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- TextAreaInput with Label -->
+        <div class="comp-block">
+          <div class="comp-label">TextAreaInput — Label Structure</div>
+          <div class="comp-preview" style="flex-wrap:wrap;gap:24px;align-items:flex-start">
+
+            <div class="tf-wrap" style="min-width:260px;flex:1">
+              <div class="tf-label-row">
+                <span class="tf-label">หมายเหตุ</span>
+                <span class="tf-optional">Optional</span>
+              </div>
+              <span class="tf-desc">กรอกรายละเอียดเพิ่มเติม</span>
+              <textarea class="tf-textarea" placeholder="กรอกข้อความ..."></textarea>
+            </div>
+
+            <div class="tf-wrap" style="min-width:260px;flex:1">
+              <div class="tf-label-row">
+                <span class="tf-label">ที่อยู่จัดส่ง</span>
+                <span class="tf-required">*</span>
+              </div>
+              <textarea class="tf-textarea tf-error" placeholder="กรอกที่อยู่จัดส่ง"></textarea>
+              <span class="tf-error-msg">กรุณากรอกที่อยู่จัดส่ง</span>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- TextAreaInput + Rich Text Editor -->
+        <div class="comp-block">
+          <div class="comp-label">TextAreaInput — Text Editor (Toggle)</div>
+          <div class="comp-preview" style="flex-wrap:wrap;gap:24px;align-items:flex-start">
+
+            <!-- Variant A: toolbar hidden (default) -->
+            <div class="tf-wrap" style="min-width:280px;flex:1">
+              <div class="tf-label-row">
+                <span class="tf-label">หมายเหตุ</span>
+                <button class="tf-rte-toggle" aria-pressed="false">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+                  <span class="tf-rte-lbl">Text Editor</span>
+                </button>
+              </div>
+              <div class="tf-rte-wrap">
+                <div class="tf-rte-bar">
+                  <div class="tf-rte-group">
+                    <button class="tf-rte-btn" data-cmd="bold"          title="Bold"><b>B</b></button>
+                    <button class="tf-rte-btn" data-cmd="italic"        title="Italic"><i>I</i></button>
+                    <button class="tf-rte-btn" data-cmd="underline"     title="Underline"><u>U</u></button>
+                    <button class="tf-rte-btn" data-cmd="strikeThrough" title="Strikethrough"><s>S</s></button>
+                  </div>
+                  <div class="tf-rte-sep"></div>
+                  <div class="tf-rte-group">
+                    <button class="tf-rte-btn" data-cmd="insertUnorderedList" title="Bullet list">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="9" y1="6" x2="20" y2="6"/><line x1="9" y1="12" x2="20" y2="12"/><line x1="9" y1="18" x2="20" y2="18"/><circle cx="4" cy="6" r="1.5" fill="currentColor" stroke="none"/><circle cx="4" cy="12" r="1.5" fill="currentColor" stroke="none"/><circle cx="4" cy="18" r="1.5" fill="currentColor" stroke="none"/></svg>
+                    </button>
+                    <button class="tf-rte-btn" data-cmd="insertOrderedList" title="Numbered list">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="10" y1="6" x2="21" y2="6"/><line x1="10" y1="12" x2="21" y2="12"/><line x1="10" y1="18" x2="21" y2="18"/><path d="M4 6h1v4"/><path d="M4 10h2"/><path d="M6 18H4c0-1 2-2 2-3s-1-2-2-2"/></svg>
+                    </button>
+                  </div>
+                  <div class="tf-rte-sep"></div>
+                  <div class="tf-rte-group">
+                    <button class="tf-rte-btn" data-cmd="justifyLeft"   title="Align left">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg>
+                    </button>
+                    <button class="tf-rte-btn" data-cmd="justifyCenter" title="Align center">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="6" y1="12" x2="18" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                    </button>
+                    <button class="tf-rte-btn" data-cmd="justifyRight"  title="Align right">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="9" y1="12" x2="21" y2="12"/><line x1="6" y1="18" x2="21" y2="18"/></svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="tf-rte-content" contenteditable="false" data-placeholder="กรอกข้อความ..."></div>
+              </div>
+            </div>
+
+            <!-- Variant B: toolbar enabled (pre-open) -->
+            <div class="tf-wrap" style="min-width:280px;flex:1">
+              <div class="tf-label-row">
+                <span class="tf-label">รายละเอียด</span>
+                <span class="tf-required">*</span>
+                <button class="tf-rte-toggle active" aria-pressed="true">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+                  <span class="tf-rte-lbl">ปิด Editor</span>
+                </button>
+              </div>
+              <div class="tf-rte-wrap">
+                <div class="tf-rte-bar active">
+                  <div class="tf-rte-group">
+                    <button class="tf-rte-btn" data-cmd="bold"          title="Bold"><b>B</b></button>
+                    <button class="tf-rte-btn" data-cmd="italic"        title="Italic"><i>I</i></button>
+                    <button class="tf-rte-btn" data-cmd="underline"     title="Underline"><u>U</u></button>
+                    <button class="tf-rte-btn" data-cmd="strikeThrough" title="Strikethrough"><s>S</s></button>
+                  </div>
+                  <div class="tf-rte-sep"></div>
+                  <div class="tf-rte-group">
+                    <button class="tf-rte-btn" data-cmd="insertUnorderedList" title="Bullet list">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="9" y1="6" x2="20" y2="6"/><line x1="9" y1="12" x2="20" y2="12"/><line x1="9" y1="18" x2="20" y2="18"/><circle cx="4" cy="6" r="1.5" fill="currentColor" stroke="none"/><circle cx="4" cy="12" r="1.5" fill="currentColor" stroke="none"/><circle cx="4" cy="18" r="1.5" fill="currentColor" stroke="none"/></svg>
+                    </button>
+                    <button class="tf-rte-btn" data-cmd="insertOrderedList" title="Numbered list">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="10" y1="6" x2="21" y2="6"/><line x1="10" y1="12" x2="21" y2="12"/><line x1="10" y1="18" x2="21" y2="18"/><path d="M4 6h1v4"/><path d="M4 10h2"/><path d="M6 18H4c0-1 2-2 2-3s-1-2-2-2"/></svg>
+                    </button>
+                  </div>
+                  <div class="tf-rte-sep"></div>
+                  <div class="tf-rte-group">
+                    <button class="tf-rte-btn" data-cmd="justifyLeft"   title="Align left">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg>
+                    </button>
+                    <button class="tf-rte-btn" data-cmd="justifyCenter" title="Align center">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="6" y1="12" x2="18" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                    </button>
+                    <button class="tf-rte-btn" data-cmd="justifyRight"  title="Align right">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="9" y1="12" x2="21" y2="12"/><line x1="6" y1="18" x2="21" y2="18"/></svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="tf-rte-content" contenteditable="true" data-placeholder="กรอกข้อความ...">ตัวอย่างข้อความ <b>ตัวหนา</b> และ <i>ตัวเอียง</i></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Code Block -->
         <div class="codeblock">
-          <div class="cb-header"><span class="cb-lang">HTML</span><button class="cb-copy" data-copy='<div class="field-group">
-  <label class="field-label">Label</label>
-  <input class="field" type="text" placeholder="Placeholder..." />
+          <div class="cb-header"><span class="cb-lang">HTML</span><button class="cb-copy" data-copy='<!-- TextFieldInput -->
+<div class="tf-wrap">
+  <div class="tf-label-row">
+    <span class="tf-label">Label</span>
+    <span class="tf-required">*</span>
+  </div>
+  <div class="tf-input-wrap">
+    <input class="tf-input" type="text" placeholder="Placeholder text" />
+  </div>
 </div>
 
-<div class="field-group">
-  <label class="field-label">Message</label>
-  <textarea class="field field-textarea" placeholder="Message..."></textarea>
-</div>'>Copy</button></div>
-          <pre><code>&lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">"field-group"</span>&gt;
-  &lt;<span class="tk-tag">label</span> <span class="tk-attr">class</span>=<span class="tk-str">"field-label"</span>&gt;Label&lt;/<span class="tk-tag">label</span>&gt;
-  &lt;<span class="tk-tag">input</span> <span class="tk-attr">class</span>=<span class="tk-str">"field"</span> <span class="tk-attr">type</span>=<span class="tk-str">"text"</span> <span class="tk-attr">placeholder</span>=<span class="tk-str">"Placeholder..."</span> /&gt;
-&lt;/<span class="tk-tag">div</span>&gt;</code></pre>
+<!-- TextFieldInput — leading icon -->
+<div class="tf-wrap">
+  <div class="tf-input-wrap">
+    <svg class="tf-icon-lead" ...></svg>
+    <input class="tf-input tf-has-lead" type="text" placeholder="ค้นหา..." />
+  </div>
+</div>
+
+<!-- TextAreaInput -->
+<div class="tf-wrap">
+  <div class="tf-label-row">
+    <span class="tf-label">หมายเหตุ</span>
+    <span class="tf-optional">Optional</span>
+  </div>
+  <span class="tf-desc">กรอกรายละเอียดเพิ่มเติม</span>
+  <textarea class="tf-textarea" placeholder="กรอกข้อความ..."></textarea>
+</div>
+
+<!-- States: tf-focused / tf-error / disabled -->
+<input class="tf-input tf-focused" ... />
+<input class="tf-input tf-error" ... />
+<input class="tf-input" disabled />
+<textarea class="tf-textarea tf-error" ...></textarea>
+<span class="tf-error-msg">ข้อความ error</span>'>Copy</button></div>
+          <pre><code><span class="tk-comment">&lt;!-- TextFieldInput --&gt;</span>
+&lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">"tf-wrap"</span>&gt;
+  &lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">"tf-label-row"</span>&gt;
+    &lt;<span class="tk-tag">span</span> <span class="tk-attr">class</span>=<span class="tk-str">"tf-label"</span>&gt;Label&lt;/<span class="tk-tag">span</span>&gt;
+    &lt;<span class="tk-tag">span</span> <span class="tk-attr">class</span>=<span class="tk-str">"tf-required"</span>&gt;*&lt;/<span class="tk-tag">span</span>&gt;
+  &lt;/<span class="tk-tag">div</span>&gt;
+  &lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">"tf-input-wrap"</span>&gt;
+    &lt;<span class="tk-tag">input</span> <span class="tk-attr">class</span>=<span class="tk-str">"tf-input"</span> <span class="tk-attr">type</span>=<span class="tk-str">"text"</span> <span class="tk-attr">placeholder</span>=<span class="tk-str">"Placeholder text"</span> /&gt;
+  &lt;/<span class="tk-tag">div</span>&gt;
+&lt;/<span class="tk-tag">div</span>&gt;
+
+<span class="tk-comment">&lt;!-- TextFieldInput — leading icon --&gt;</span>
+&lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">"tf-wrap"</span>&gt;
+  &lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">"tf-input-wrap"</span>&gt;
+    &lt;<span class="tk-tag">svg</span> <span class="tk-attr">class</span>=<span class="tk-str">"tf-icon-lead"</span> ...&gt;&lt;/<span class="tk-tag">svg</span>&gt;
+    &lt;<span class="tk-tag">input</span> <span class="tk-attr">class</span>=<span class="tk-str">"tf-input tf-has-lead"</span> <span class="tk-attr">type</span>=<span class="tk-str">"text"</span> <span class="tk-attr">placeholder</span>=<span class="tk-str">"ค้นหา..."</span> /&gt;
+  &lt;/<span class="tk-tag">div</span>&gt;
+&lt;/<span class="tk-tag">div</span>&gt;
+
+<span class="tk-comment">&lt;!-- TextAreaInput --&gt;</span>
+&lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">"tf-wrap"</span>&gt;
+  &lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">"tf-label-row"</span>&gt;
+    &lt;<span class="tk-tag">span</span> <span class="tk-attr">class</span>=<span class="tk-str">"tf-label"</span>&gt;หมายเหตุ&lt;/<span class="tk-tag">span</span>&gt;
+    &lt;<span class="tk-tag">span</span> <span class="tk-attr">class</span>=<span class="tk-str">"tf-optional"</span>&gt;Optional&lt;/<span class="tk-tag">span</span>&gt;
+  &lt;/<span class="tk-tag">div</span>&gt;
+  &lt;<span class="tk-tag">span</span> <span class="tk-attr">class</span>=<span class="tk-str">"tf-desc"</span>&gt;กรอกรายละเอียดเพิ่มเติม&lt;/<span class="tk-tag">span</span>&gt;
+  &lt;<span class="tk-tag">textarea</span> <span class="tk-attr">class</span>=<span class="tk-str">"tf-textarea"</span> <span class="tk-attr">placeholder</span>=<span class="tk-str">"กรอกข้อความ..."</span>&gt;&lt;/<span class="tk-tag">textarea</span>&gt;
+&lt;/<span class="tk-tag">div</span>&gt;
+
+<span class="tk-comment">&lt;!-- States --&gt;</span>
+&lt;<span class="tk-tag">input</span> <span class="tk-attr">class</span>=<span class="tk-str">"tf-input tf-focused"</span> ... /&gt;
+&lt;<span class="tk-tag">input</span> <span class="tk-attr">class</span>=<span class="tk-str">"tf-input tf-error"</span> ... /&gt;
+&lt;<span class="tk-tag">input</span> <span class="tk-attr">class</span>=<span class="tk-str">"tf-input"</span> <span class="tk-attr">disabled</span> /&gt;
+&lt;<span class="tk-tag">textarea</span> <span class="tk-attr">class</span>=<span class="tk-str">"tf-textarea tf-error"</span>&gt;&lt;/<span class="tk-tag">textarea</span>&gt;
+&lt;<span class="tk-tag">span</span> <span class="tk-attr">class</span>=<span class="tk-str">"tf-error-msg"</span>&gt;ข้อความ error&lt;/<span class="tk-tag">span</span>&gt;</code></pre>
         </div>
       </section>
 
@@ -1715,6 +2001,395 @@ figma.<span class="tk-fn">connect</span>(Button, <span class="tk-str">"YOUR_FIGM
 &lt;/<span class="tk-tag">label</span>&gt;</code></pre>
         </div>
 
+      </section>
+
+      <!-- ── RADIO ───────────────────────────────────────────── -->
+      <section id="radio" class="ds-section">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Radio</h2>
+            <p class="section-desc">Single selection — 2 variants · Dot &amp; Check · เลือกได้ 1 ตัวเลือกต่อกลุ่ม</p>
+          </div>
+          <a href="https://www.figma.com/design/1oi1KLBMz6qVDhAOn7kQOf?node-id=36-1186" target="_blank" class="figma-ref-btn">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z"/><path d="M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z"/><path d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 1 1-7 0z"/><path d="M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 1 1-7 0z"/><path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z"/></svg>
+            Open in Figma
+          </a>
+        </div>
+
+        <!-- Variants -->
+        <div class="comp-block">
+          <div class="comp-label">Variants</div>
+          <div class="comp-preview" style="gap:48px;flex-wrap:wrap;padding:28px 24px;align-items:flex-start">
+            <div class="tgl-demo-col">
+              <div class="rdo-btn rdo-static"></div>
+              <span class="tgl-vname">Unselected</span>
+              <span class="tgl-vspec">1.5px border</span>
+            </div>
+            <div class="tgl-demo-col">
+              <div class="rdo-btn selected rdo-static"></div>
+              <span class="tgl-vname">Selected — Dot</span>
+              <span class="tgl-vspec">4px border fill</span>
+            </div>
+            <div class="tgl-demo-col">
+              <div class="rdo-btn rdo-check selected rdo-static">
+                <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <span class="tgl-vname">Selected — Check</span>
+              <span class="tgl-vspec">filled + icon</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- States -->
+        <div class="comp-block">
+          <div class="comp-label">States</div>
+          <div class="comp-preview" style="padding:0;overflow:hidden">
+            <div class="sel-state-grid">
+              <div class="tgl-sg-head"></div>
+              <div class="tgl-sg-head">Default</div>
+              <div class="tgl-sg-head">Selected</div>
+              <div class="tgl-sg-head">Focus</div>
+              <div class="tgl-sg-head">Error</div>
+              <div class="tgl-sg-head">Disabled</div>
+
+              <!-- Dot -->
+              <div class="tgl-sg-label">Dot</div>
+              <div class="tgl-sg-cell"><div class="rdo-btn rdo-static"></div></div>
+              <div class="tgl-sg-cell"><div class="rdo-btn selected rdo-static"></div></div>
+              <div class="tgl-sg-cell"><div class="rdo-btn selected rdo-static rdo-focus"></div></div>
+              <div class="tgl-sg-cell"><div class="rdo-btn rdo-static rdo-error"></div></div>
+              <div class="tgl-sg-cell"><div class="rdo-btn selected rdo-static rdo-dis"></div></div>
+
+              <!-- Check -->
+              <div class="tgl-sg-label">Check</div>
+              <div class="tgl-sg-cell"><div class="rdo-btn rdo-static"></div></div>
+              <div class="tgl-sg-cell">
+                <div class="rdo-btn rdo-check selected rdo-static">
+                  <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+              </div>
+              <div class="tgl-sg-cell">
+                <div class="rdo-btn rdo-check selected rdo-static rdo-focus">
+                  <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+              </div>
+              <div class="tgl-sg-cell">
+                <div class="rdo-btn rdo-check selected rdo-static rdo-error">
+                  <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+              </div>
+              <div class="tgl-sg-cell">
+                <div class="rdo-btn rdo-check selected rdo-static rdo-dis">
+                  <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#c7c9d9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Radio Group (Dot) -->
+        <div class="comp-block">
+          <div class="comp-label">Radio Group — คลิกเพื่อเลือก</div>
+          <div class="comp-preview" style="gap:32px;flex-wrap:wrap;padding:20px 24px;align-items:flex-start">
+
+            <!-- Dot variant group -->
+            <div style="display:flex;flex-direction:column;gap:12px;min-width:180px">
+              <span style="font-size:11px;font-weight:700;color:var(--tx-3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">Dot Style</span>
+              <label class="rdo-labeled" data-radio-group="demo-dot">
+                <div class="rdo-btn" role="radio" aria-checked="false" tabindex="0"></div>
+                <div class="rdo-lbl-wrap"><span class="rdo-lbl">Option 1</span></div>
+              </label>
+              <label class="rdo-labeled" data-radio-group="demo-dot">
+                <div class="rdo-btn selected" role="radio" aria-checked="true" tabindex="0"></div>
+                <div class="rdo-lbl-wrap">
+                  <span class="rdo-lbl">Option 2</span>
+                  <span class="rdo-desc">Description text</span>
+                </div>
+              </label>
+              <label class="rdo-labeled" data-radio-group="demo-dot">
+                <div class="rdo-btn" role="radio" aria-checked="false" tabindex="0"></div>
+                <div class="rdo-lbl-wrap"><span class="rdo-lbl">Option 3</span></div>
+              </label>
+              <label class="rdo-labeled" data-radio-group="demo-dot" style="opacity:.4;pointer-events:none">
+                <div class="rdo-btn rdo-static rdo-dis" role="radio" aria-checked="false" aria-disabled="true"></div>
+                <div class="rdo-lbl-wrap"><span class="rdo-lbl">Disabled</span></div>
+              </label>
+            </div>
+
+            <!-- Check variant group -->
+            <div style="display:flex;flex-direction:column;gap:12px;min-width:180px">
+              <span style="font-size:11px;font-weight:700;color:var(--tx-3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">Check Style</span>
+              <label class="rdo-labeled" data-radio-group="demo-check">
+                <div class="rdo-btn rdo-check" role="radio" aria-checked="false" tabindex="0">
+                  <svg class="rdo-chk-icon" width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="rdo-lbl-wrap"><span class="rdo-lbl">Option A</span></div>
+              </label>
+              <label class="rdo-labeled" data-radio-group="demo-check">
+                <div class="rdo-btn rdo-check selected" role="radio" aria-checked="true" tabindex="0">
+                  <svg class="rdo-chk-icon" width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="rdo-lbl-wrap">
+                  <span class="rdo-lbl">Option B</span>
+                  <span class="rdo-desc">Description text</span>
+                </div>
+              </label>
+              <label class="rdo-labeled" data-radio-group="demo-check">
+                <div class="rdo-btn rdo-check" role="radio" aria-checked="false" tabindex="0">
+                  <svg class="rdo-chk-icon" width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="rdo-lbl-wrap"><span class="rdo-lbl">Option C</span></div>
+              </label>
+              <!-- Error example -->
+              <label class="rdo-labeled" data-radio-group="demo-check">
+                <div class="rdo-btn rdo-check rdo-error" role="radio" aria-checked="false" tabindex="0">
+                  <svg class="rdo-chk-icon" width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="rdo-lbl-wrap">
+                  <span class="rdo-lbl" style="color:#ff4d4f">Option D — Error</span>
+                  <span class="rdo-desc" style="color:#ff4d4f">Error Text</span>
+                </div>
+              </label>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Code -->
+        <div class="codeblock">
+          <div class="cb-header">
+            <span class="cb-lang">HTML</span>
+            <button class="cb-copy" data-copy='<!-- Radio — Unselected -->
+<div class="rdo-btn" role="radio" aria-checked="false" tabindex="0"></div>
+
+<!-- Radio — Selected (Dot) -->
+<div class="rdo-btn selected" role="radio" aria-checked="true" tabindex="0"></div>
+
+<!-- Radio — Selected (Check) -->
+<div class="rdo-btn rdo-check selected" role="radio" aria-checked="true" tabindex="0">
+  <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+    <path d="M2 6L5 9L10 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</div>
+
+<!-- Radio — Error -->
+<div class="rdo-btn rdo-error" role="radio" aria-checked="false" tabindex="0"></div>
+
+<!-- Radio — Disabled -->
+<div class="rdo-btn rdo-dis" role="radio" aria-checked="false" aria-disabled="true"></div>
+
+<!-- Radio Group with Label -->
+<label class="rdo-labeled" data-radio-group="my-group">
+  <div class="rdo-btn selected" role="radio" aria-checked="true" tabindex="0"></div>
+  <div class="rdo-lbl-wrap">
+    <span class="rdo-lbl">Option label</span>
+    <span class="rdo-desc">Optional description</span>
+  </div>
+</label>'>Copy</button>
+          </div>
+          <pre><code><span class="tk-comment">&lt;!-- Radio — Unselected --&gt;</span>
+&lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">"rdo-btn"</span> <span class="tk-attr">role</span>=<span class="tk-str">"radio"</span> <span class="tk-attr">aria-checked</span>=<span class="tk-str">"false"</span> <span class="tk-attr">tabindex</span>=<span class="tk-str">"0"</span>&gt;&lt;/<span class="tk-tag">div</span>&gt;
+
+<span class="tk-comment">&lt;!-- Radio — Selected (Dot) --&gt;</span>
+&lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">"rdo-btn selected"</span> <span class="tk-attr">role</span>=<span class="tk-str">"radio"</span> <span class="tk-attr">aria-checked</span>=<span class="tk-str">"true"</span> <span class="tk-attr">tabindex</span>=<span class="tk-str">"0"</span>&gt;&lt;/<span class="tk-tag">div</span>&gt;
+
+<span class="tk-comment">&lt;!-- Radio — Selected (Check) --&gt;</span>
+&lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">"rdo-btn rdo-check selected"</span> <span class="tk-attr">role</span>=<span class="tk-str">"radio"</span> <span class="tk-attr">aria-checked</span>=<span class="tk-str">"true"</span> <span class="tk-attr">tabindex</span>=<span class="tk-str">"0"</span>&gt;
+  &lt;<span class="tk-tag">svg</span> ...&gt;...&lt;/<span class="tk-tag">svg</span>&gt;
+&lt;/<span class="tk-tag">div</span>&gt;
+
+<span class="tk-comment">&lt;!-- Radio Group with Label --&gt;</span>
+&lt;<span class="tk-tag">label</span> <span class="tk-attr">class</span>=<span class="tk-str">"rdo-labeled"</span> <span class="tk-attr">data-radio-group</span>=<span class="tk-str">"my-group"</span>&gt;
+  &lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">"rdo-btn"</span> <span class="tk-attr">role</span>=<span class="tk-str">"radio"</span> <span class="tk-attr">aria-checked</span>=<span class="tk-str">"false"</span> <span class="tk-attr">tabindex</span>=<span class="tk-str">"0"</span>&gt;&lt;/<span class="tk-tag">div</span>&gt;
+  &lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">"rdo-lbl-wrap"</span>&gt;
+    &lt;<span class="tk-tag">span</span> <span class="tk-attr">class</span>=<span class="tk-str">"rdo-lbl"</span>&gt;Option label&lt;/<span class="tk-tag">span</span>&gt;
+    &lt;<span class="tk-tag">span</span> <span class="tk-attr">class</span>=<span class="tk-str">"rdo-desc"</span>&gt;Optional description&lt;/<span class="tk-tag">span</span>&gt;
+  &lt;/<span class="tk-tag">div</span>&gt;
+&lt;/<span class="tk-tag">label</span>&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- ── CHECKBOX ──────────────────────────────────────────── -->
+      <section id="checkbox" class="ds-section">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Checkbox</h2>
+            <p class="section-desc">Multi-selection control — 3 states · Unselected, Selected, Indeterminate</p>
+          </div>
+          <a href="https://www.figma.com/design/1oi1KLBMz6qVDhAOn7kQOf?node-id=36-1504" target="_blank" class="figma-ref-btn">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z"/><path d="M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z"/><path d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 1 1-7 0z"/><path d="M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 1 1-7 0z"/><path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z"/></svg>
+            Open in Figma
+          </a>
+        </div>
+
+        <!-- Variants -->
+        <div class="comp-block">
+          <div class="comp-label">Variants</div>
+          <div class="comp-preview" style="gap:48px;flex-wrap:wrap;padding:28px 24px;align-items:flex-start">
+            <div class="tgl-demo-col">
+              <div class="chk-btn chk-static"></div>
+              <span class="tgl-vname">Unselected</span>
+              <span class="tgl-vspec">1.5px border</span>
+            </div>
+            <div class="tgl-demo-col">
+              <div class="chk-btn selected chk-static">
+                <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <span class="tgl-vname">Selected</span>
+              <span class="tgl-vspec">filled + check</span>
+            </div>
+            <div class="tgl-demo-col">
+              <div class="chk-btn indeterminate chk-static">
+                <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><line x1="2" y1="6" x2="10" y2="6" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </div>
+              <span class="tgl-vname">Indeterminate</span>
+              <span class="tgl-vspec">filled + dash</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- States -->
+        <div class="comp-block">
+          <div class="comp-label">States</div>
+          <div class="comp-preview" style="padding:0;overflow:hidden">
+            <div class="sel-state-grid">
+              <div class="tgl-sg-head"></div>
+              <div class="tgl-sg-head">Unselected</div>
+              <div class="tgl-sg-head">Selected</div>
+              <div class="tgl-sg-head">Indeterminate</div>
+              <div class="tgl-sg-head">Error</div>
+              <div class="tgl-sg-head">Disabled</div>
+
+              <!-- Default -->
+              <div class="tgl-sg-label">Default</div>
+              <div class="tgl-sg-cell"><div class="chk-btn chk-static"></div></div>
+              <div class="tgl-sg-cell"><div class="chk-btn selected chk-static"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+              <div class="tgl-sg-cell"><div class="chk-btn indeterminate chk-static"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><line x1="2" y1="6" x2="10" y2="6" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+              <div class="tgl-sg-cell"><div class="chk-btn chk-static chk-error"></div></div>
+              <div class="tgl-sg-cell"><div class="chk-btn chk-static chk-dis"></div></div>
+
+              <!-- Selected states -->
+              <div class="tgl-sg-label">Focus</div>
+              <div class="tgl-sg-cell"><div class="chk-btn chk-static chk-focus"></div></div>
+              <div class="tgl-sg-cell"><div class="chk-btn selected chk-static chk-focus"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+              <div class="tgl-sg-cell"><div class="chk-btn indeterminate chk-static chk-focus"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><line x1="2" y1="6" x2="10" y2="6" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+              <div class="tgl-sg-cell"><div class="chk-btn selected chk-static chk-error"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+              <div class="tgl-sg-cell"><div class="chk-btn selected chk-static chk-dis"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#c7c9d9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Checkbox Group with parent -->
+        <div class="comp-block">
+          <div class="comp-label">Checkbox Group — parent / child · คลิกเพื่อ interact</div>
+          <div class="comp-preview" style="flex-direction:column;gap:0;align-items:flex-start;padding:20px 24px">
+
+            <!-- Parent -->
+            <label class="chk-labeled chk-parent" id="chk-parent-demo">
+              <div class="chk-btn indeterminate" role="checkbox" aria-checked="mixed" tabindex="0">
+                <svg class="chk-icon-check" width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <svg class="chk-icon-dash" width="10" height="10" viewBox="0 0 12 12" fill="none"><line x1="2" y1="6" x2="10" y2="6" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </div>
+              <span class="rdo-lbl">Select all</span>
+            </label>
+
+            <!-- Children -->
+            <div class="chk-children" data-parent="chk-parent-demo">
+              <label class="chk-labeled chk-child">
+                <div class="chk-btn selected" role="checkbox" aria-checked="true" tabindex="0">
+                  <svg class="chk-icon-check" width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <svg class="chk-icon-dash" width="10" height="10" viewBox="0 0 12 12" fill="none"><line x1="2" y1="6" x2="10" y2="6" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </div>
+                <span class="rdo-lbl">Option A</span>
+              </label>
+              <label class="chk-labeled chk-child">
+                <div class="chk-btn" role="checkbox" aria-checked="false" tabindex="0">
+                  <svg class="chk-icon-check" width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <svg class="chk-icon-dash" width="10" height="10" viewBox="0 0 12 12" fill="none"><line x1="2" y1="6" x2="10" y2="6" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </div>
+                <span class="rdo-lbl">Option B</span>
+              </label>
+              <label class="chk-labeled chk-child">
+                <div class="chk-btn selected" role="checkbox" aria-checked="true" tabindex="0">
+                  <svg class="chk-icon-check" width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <svg class="chk-icon-dash" width="10" height="10" viewBox="0 0 12 12" fill="none"><line x1="2" y1="6" x2="10" y2="6" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </div>
+                <span class="rdo-lbl">Option C</span>
+              </label>
+              <label class="chk-labeled chk-child" style="opacity:.4;pointer-events:none">
+                <div class="chk-btn chk-dis chk-static" role="checkbox" aria-checked="false" aria-disabled="true">
+                  <svg class="chk-icon-check" width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#c7c9d9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <svg class="chk-icon-dash" width="10" height="10" viewBox="0 0 12 12" fill="none"><line x1="2" y1="6" x2="10" y2="6" stroke="#c7c9d9" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </div>
+                <span class="rdo-lbl">Option D — Disabled</span>
+              </label>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Code -->
+        <div class="codeblock">
+          <div class="cb-header">
+            <span class="cb-lang">HTML</span>
+            <button class="cb-copy" data-copy='<!-- Checkbox — Unselected -->
+<div class="chk-btn" role="checkbox" aria-checked="false" tabindex="0">
+  <svg class="chk-icon-check" ...>...</svg>
+  <svg class="chk-icon-dash"  ...>...</svg>
+</div>
+
+<!-- Checkbox — Selected -->
+<div class="chk-btn selected" role="checkbox" aria-checked="true" tabindex="0">
+  <svg class="chk-icon-check" ...>...</svg>
+  <svg class="chk-icon-dash"  ...>...</svg>
+</div>
+
+<!-- Checkbox — Indeterminate -->
+<div class="chk-btn indeterminate" role="checkbox" aria-checked="mixed" tabindex="0">
+  <svg class="chk-icon-check" ...>...</svg>
+  <svg class="chk-icon-dash"  ...>...</svg>
+</div>
+
+<!-- Checkbox — Error -->
+<div class="chk-btn chk-error" role="checkbox" aria-checked="false" tabindex="0">...</div>
+
+<!-- Checkbox — Disabled -->
+<div class="chk-btn chk-dis" role="checkbox" aria-checked="false" aria-disabled="true">...</div>
+
+<!-- With Label -->
+<label class="chk-labeled">
+  <div class="chk-btn" role="checkbox" aria-checked="false" tabindex="0">
+    <svg class="chk-icon-check" width="10" height="10" viewBox="0 0 12 12" fill="none">
+      <path d="M2 6L5 9L10 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <svg class="chk-icon-dash" width="10" height="10" viewBox="0 0 12 12" fill="none">
+      <line x1="2" y1="6" x2="10" y2="6" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <span class="rdo-lbl">Option label</span>
+</label>'>Copy</button>
+          </div>
+          <pre><code><span class="tk-comment">&lt;!-- Unselected --&gt;</span>
+&lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">"chk-btn"</span> <span class="tk-attr">role</span>=<span class="tk-str">"checkbox"</span> <span class="tk-attr">aria-checked</span>=<span class="tk-str">"false"</span> <span class="tk-attr">tabindex</span>=<span class="tk-str">"0"</span>&gt;...&lt;/<span class="tk-tag">div</span>&gt;
+
+<span class="tk-comment">&lt;!-- Selected —  add .selected class --&gt;</span>
+&lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">"chk-btn selected"</span> <span class="tk-attr">aria-checked</span>=<span class="tk-str">"true"</span> ...&gt;...&lt;/<span class="tk-tag">div</span>&gt;
+
+<span class="tk-comment">&lt;!-- Indeterminate — add .indeterminate class --&gt;</span>
+&lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">"chk-btn indeterminate"</span> <span class="tk-attr">aria-checked</span>=<span class="tk-str">"mixed"</span> ...&gt;...&lt;/<span class="tk-tag">div</span>&gt;
+
+<span class="tk-comment">&lt;!-- Error — add .chk-error class --&gt;</span>
+&lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">"chk-btn chk-error"</span> ...&gt;...&lt;/<span class="tk-tag">div</span>&gt;
+
+<span class="tk-comment">&lt;!-- Disabled — add .chk-dis class --&gt;</span>
+&lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">"chk-btn chk-dis"</span> <span class="tk-attr">aria-disabled</span>=<span class="tk-str">"true"</span>&gt;...&lt;/<span class="tk-tag">div</span>&gt;
+
+<span class="tk-comment">&lt;!-- With Label --&gt;</span>
+&lt;<span class="tk-tag">label</span> <span class="tk-attr">class</span>=<span class="tk-str">"chk-labeled"</span>&gt;
+  &lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">"chk-btn"</span> ...&gt;...&lt;/<span class="tk-tag">div</span>&gt;
+  &lt;<span class="tk-tag">span</span> <span class="tk-attr">class</span>=<span class="tk-str">"rdo-lbl"</span>&gt;Option label&lt;/<span class="tk-tag">span</span>&gt;
+&lt;/<span class="tk-tag">label</span>&gt;</code></pre>
+        </div>
       </section>
 
     </main>
