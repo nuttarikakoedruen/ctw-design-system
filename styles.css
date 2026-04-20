@@ -1168,6 +1168,32 @@ input, textarea { font-family: inherit; }
 .tf-textarea.tf-error:focus   { box-shadow: 0 0 0 3px rgba(255,77,79,.12); }
 .tf-textarea.tf-focused       { border-color: #27397c; box-shadow: 0 0 0 3px rgba(39,57,124,.12); }
 
+/* ── Section Preview / Code Tabs ────────────────────────────── */
+.sec-tab-nav {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border-bottom: 1.5px solid var(--border);
+  margin-bottom: 24px;
+}
+.sec-tab-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 16px;
+  border: none; border-bottom: 2px solid transparent;
+  background: none; cursor: pointer;
+  font-size: 13px; font-weight: 500; color: var(--tx-2);
+  margin-bottom: -1.5px;
+  transition: color .15s, border-color .15s;
+  white-space: nowrap; font-family: var(--font);
+}
+.sec-tab-btn:hover { color: var(--tx); }
+.sec-tab-btn.active {
+  color: var(--p-800);
+  border-bottom-color: var(--p-800);
+  font-weight: 600;
+}
+.sec-pane.hidden { display: none !important; }
+
 /* ── Dropdown Component ──────────────────────────────────────── */
 .dd-wrap { position: relative; display: inline-block; }
 

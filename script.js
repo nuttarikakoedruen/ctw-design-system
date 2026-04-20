@@ -689,3 +689,53 @@ function syncRteBar(bar) {
 document.addEventListener('selectionchange', () => {
   document.querySelectorAll('.tf-rte-bar.active').forEach(bar => syncRteBar(bar));
 });
+
+// ── Section Preview / Code Tabs ─────────────────────────────
+(function initSectionTabs() {
+  const PREVIEW_ICO = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>`;
+  const CODE_ICO    = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`;
+
+  document.querySelectorAll('.ds-section').forEach(section => {
+    /* Only sections that have direct-child .comp-block elements */
+    const compBlocks = [...section.querySelectorAll(':scope > .comp-block')];
+    if (!compBlocks.length) return;
+    const codeBlock = section.querySelector(':scope > .codeblock');
+
+    /* ── Tab nav ── */
+    const tabNav = document.createElement('div');
+    tabNav.className = 'sec-tab-nav';
+    tabNav.innerHTML = `
+      <button class="sec-tab-btn active" data-pane="preview">${PREVIEW_ICO} Preview</button>
+      <button class="sec-tab-btn"        data-pane="code">${CODE_ICO} Code</button>`;
+
+    /* ── Preview pane (holds all comp-blocks) ── */
+    const previewPane = document.createElement('div');
+    previewPane.className = 'sec-pane';
+    previewPane.dataset.pane = 'preview';
+    compBlocks.forEach(b => previewPane.appendChild(b));
+
+    /* ── Code pane (holds the codeblock) ── */
+    const codePane = document.createElement('div');
+    codePane.className = 'sec-pane hidden';
+    codePane.dataset.pane = 'code';
+    if (codeBlock) codePane.appendChild(codeBlock);
+
+    /* Insert after the last header-like direct child (section-header > section-desc > section-title) */
+    const anchor =
+      section.querySelector(':scope > .section-header') ||
+      section.querySelector(':scope > .section-desc')   ||
+      section.querySelector(':scope > .section-title');
+    anchor.after(tabNav, previewPane, codePane);
+
+    /* ── Click handler ── */
+    tabNav.querySelectorAll('.sec-tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabNav.querySelectorAll('.sec-tab-btn').forEach(b => b.classList.remove('active'));
+        section.querySelectorAll(':scope > .sec-pane').forEach(p => p.classList.add('hidden'));
+        btn.classList.add('active');
+        const target = section.querySelector(`:scope > .sec-pane[data-pane="${btn.dataset.pane}"]`);
+        if (target) target.classList.remove('hidden');
+      });
+    });
+  });
+})();
