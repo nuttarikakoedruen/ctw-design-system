@@ -124,6 +124,20 @@ document.querySelectorAll('.swatch').forEach(swatch => {
   });
 });
 
+// ── Toggle interaction ───────────────────────────────────────────
+document.querySelectorAll('.tgl-track:not(.tgl-disabled):not(.tgl-static)').forEach(track => {
+  track.addEventListener('click', () => {
+    const isActive = track.classList.toggle('active');
+    track.setAttribute('aria-checked', String(isActive));
+  });
+  track.addEventListener('keydown', e => {
+    if (e.key === ' ' || e.key === 'Enter') {
+      e.preventDefault();
+      track.click();
+    }
+  });
+});
+
 // Typography variant row click — copy Figma style path
 document.querySelectorAll('.tsv-row').forEach(row => {
   row.addEventListener('click', () => {

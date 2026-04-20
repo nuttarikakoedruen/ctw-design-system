@@ -115,6 +115,12 @@
           </span>
           Divider
         </a>
+        <a class="nav-link" href="#toggle" data-section="toggle">
+          <span class="nav-icon">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="1" y="8" width="22" height="8" rx="4"/><circle cx="17" cy="12" r="3" fill="currentColor" stroke="none"/></svg>
+          </span>
+          Toggle
+        </a>
       </div>
     </nav>
 
@@ -900,6 +906,139 @@ figma.<span class="tk-fn">connect</span>(Button, <span class="tk-str">"YOUR_FIGM
           </div>
         </div><!-- /Body -->
 
+        <!-- HTML Reference -->
+        <h3 class="sub-heading" style="margin-top:28px;">HTML Usage Reference</h3>
+
+        <!-- CSS Classes -->
+        <div class="codeblock">
+          <div class="cb-header">
+            <span class="cb-lang">CSS — Utility Classes</span>
+            <button class="cb-copy" data-copy="/* ── Typography Utility Classes — CTW Cargo Design System ── */
+/* ใช้ร่วมกับ .type-heavent หรือ .type-rounded เพื่อกำหนด font-family  */
+
+/* Font Family */
+.type-heavent  { font-family: 'DB Heavent', 'Noto Sans Thai', sans-serif; }
+.type-rounded  { font-family: 'DB HeaventRounded', 'Noto Sans Thai', sans-serif; }
+
+/* ── Display ── */
+.type-display-1 { font-size: 58px; line-height: 64px; font-weight: 700; }
+.type-display-2 { font-size: 48px; line-height: 58px; font-weight: 700; }
+.type-display-3 { font-size: 40px; line-height: 52px; font-weight: 700; }
+.type-display-4 { font-size: 33px; line-height: 40px; font-weight: 700; }
+
+/* ── Head ── */
+.type-head-1 { font-size: 48px; line-height: 48px; font-weight: 900; }
+.type-head-2 { font-size: 40px; line-height: 40px; font-weight: 900; }
+.type-head-3 { font-size: 32px; line-height: 32px; font-weight: 900; }
+.type-head-4 { font-size: 28px; line-height: 28px; font-weight: 900; }
+.type-head-5 { font-size: 20px; line-height: 20px; font-weight: 900; }
+
+/* ── Title ── */
+.type-title-1 { font-size: 28px; line-height: 28px; font-weight: 700; }
+.type-title-2 { font-size: 24px; line-height: 24px; font-weight: 700; }
+
+/* ── Body ── */
+.type-body-1 { font-size: 24px; line-height: 24px; }
+.type-body-2 { font-size: 22px; line-height: 22px; }
+.type-body-3 { font-size: 18px; line-height: 18px; }
+.type-body-4 { font-size: 14px; line-height: 14px; }
+
+/* Weight modifiers */
+.type-bold    { font-weight: 700; }
+.type-black   { font-weight: 900; }
+.type-med     { font-weight: 500; }
+.type-regular { font-weight: 400; }">Copy</button>
+          </div>
+          <pre><code><span class="tk-comment">/* ── Typography Utility Classes — CTW Cargo Design System ── */</span>
+<span class="tk-comment">/* ใช้ร่วมกับ .type-heavent หรือ .type-rounded เพื่อกำหนด font-family  */</span>
+
+<span class="tk-comment">/* Font Family */</span>
+<span class="tk-prop">.type-heavent</span>  { <span class="tk-val">font-family: 'DB Heavent', 'Noto Sans Thai', sans-serif;</span> }
+<span class="tk-prop">.type-rounded</span>  { <span class="tk-val">font-family: 'DB HeaventRounded', 'Noto Sans Thai', sans-serif;</span> }
+
+<span class="tk-comment">/* ── Display ── */</span>
+<span class="tk-prop">.type-display-1</span> { <span class="tk-val">font-size: 58px; line-height: 64px; font-weight: 700;</span> }
+<span class="tk-prop">.type-display-2</span> { <span class="tk-val">font-size: 48px; line-height: 58px; font-weight: 700;</span> }
+<span class="tk-prop">.type-display-3</span> { <span class="tk-val">font-size: 40px; line-height: 52px; font-weight: 700;</span> }
+<span class="tk-prop">.type-display-4</span> { <span class="tk-val">font-size: 33px; line-height: 40px; font-weight: 700;</span> }
+
+<span class="tk-comment">/* ── Head ── */</span>
+<span class="tk-prop">.type-head-1</span> { <span class="tk-val">font-size: 48px; line-height: 48px; font-weight: 900;</span> }
+<span class="tk-prop">.type-head-2</span> { <span class="tk-val">font-size: 40px; line-height: 40px; font-weight: 900;</span> }
+<span class="tk-prop">.type-head-3</span> { <span class="tk-val">font-size: 32px; line-height: 32px; font-weight: 900;</span> }
+<span class="tk-prop">.type-head-4</span> { <span class="tk-val">font-size: 28px; line-height: 28px; font-weight: 900;</span> }
+<span class="tk-prop">.type-head-5</span> { <span class="tk-val">font-size: 20px; line-height: 20px; font-weight: 900;</span> }
+
+<span class="tk-comment">/* ── Title ── */</span>
+<span class="tk-prop">.type-title-1</span> { <span class="tk-val">font-size: 28px; line-height: 28px; font-weight: 700;</span> }
+<span class="tk-prop">.type-title-2</span> { <span class="tk-val">font-size: 24px; line-height: 24px; font-weight: 700;</span> }
+
+<span class="tk-comment">/* ── Body ── */</span>
+<span class="tk-prop">.type-body-1</span> { <span class="tk-val">font-size: 24px; line-height: 24px;</span> }
+<span class="tk-prop">.type-body-2</span> { <span class="tk-val">font-size: 22px; line-height: 22px;</span> }
+<span class="tk-prop">.type-body-3</span> { <span class="tk-val">font-size: 18px; line-height: 18px;</span> }
+<span class="tk-prop">.type-body-4</span> { <span class="tk-val">font-size: 14px; line-height: 14px;</span> }
+
+<span class="tk-comment">/* Weight modifiers */</span>
+<span class="tk-prop">.type-bold</span>    { <span class="tk-val">font-weight: 700;</span> }
+<span class="tk-prop">.type-black</span>   { <span class="tk-val">font-weight: 900;</span> }
+<span class="tk-prop">.type-med</span>     { <span class="tk-val">font-weight: 500;</span> }
+<span class="tk-prop">.type-regular</span> { <span class="tk-val">font-weight: 400;</span> }</code></pre>
+        </div>
+
+        <!-- HTML Example Markup -->
+        <div class="codeblock" style="margin-top:12px;">
+          <div class="cb-header">
+            <span class="cb-lang">HTML — Example Markup</span>
+            <button class="cb-copy" data-copy='<!-- Display — DB Heavent Bold 58px -->
+<div class="type-heavent type-display-1">CTW Cargo Design System</div>
+
+<!-- Display — DB HeaventRounded Bold 58px -->
+<div class="type-rounded type-display-1">CTW Cargo Design System</div>
+
+<!-- Head — DB Heavent Black 48px -->
+<h1 class="type-heavent type-head-1">หัวข้อหลัก</h1>
+
+<!-- Head — DB HeaventRounded Black 32px -->
+<h2 class="type-rounded type-head-3">หัวข้อรอง</h2>
+
+<!-- Title — DB Heavent Bold 28px -->
+<h3 class="type-heavent type-title-1">Title Text</h3>
+
+<!-- Body — DB Heavent Bold 18px -->
+<p class="type-heavent type-body-3 type-bold">ข้อความ Bold</p>
+
+<!-- Body — DB HeaventRounded Regular 18px -->
+<p class="type-rounded type-body-3 type-regular">ข้อความ Regular</p>
+
+<!-- Body — DB Heavent Regular 14px (small) -->
+<span class="type-heavent type-body-4 type-regular">Caption / helper text</span>'>Copy</button>
+          </div>
+          <pre><code><span class="tk-comment">&lt;!-- Display — DB Heavent Bold 58px --&gt;</span>
+<span class="tk-prop">&lt;div</span> <span class="tk-val">class="type-heavent type-display-1"</span><span class="tk-prop">&gt;</span>CTW Cargo Design System<span class="tk-prop">&lt;/div&gt;</span>
+
+<span class="tk-comment">&lt;!-- Display — DB HeaventRounded Bold 58px --&gt;</span>
+<span class="tk-prop">&lt;div</span> <span class="tk-val">class="type-rounded type-display-1"</span><span class="tk-prop">&gt;</span>CTW Cargo Design System<span class="tk-prop">&lt;/div&gt;</span>
+
+<span class="tk-comment">&lt;!-- Head — DB Heavent Black 48px --&gt;</span>
+<span class="tk-prop">&lt;h1</span> <span class="tk-val">class="type-heavent type-head-1"</span><span class="tk-prop">&gt;</span>หัวข้อหลัก<span class="tk-prop">&lt;/h1&gt;</span>
+
+<span class="tk-comment">&lt;!-- Head — DB HeaventRounded Black 32px --&gt;</span>
+<span class="tk-prop">&lt;h2</span> <span class="tk-val">class="type-rounded type-head-3"</span><span class="tk-prop">&gt;</span>หัวข้อรอง<span class="tk-prop">&lt;/h2&gt;</span>
+
+<span class="tk-comment">&lt;!-- Title — DB Heavent Bold 28px --&gt;</span>
+<span class="tk-prop">&lt;h3</span> <span class="tk-val">class="type-heavent type-title-1"</span><span class="tk-prop">&gt;</span>Title Text<span class="tk-prop">&lt;/h3&gt;</span>
+
+<span class="tk-comment">&lt;!-- Body — DB Heavent Bold 18px --&gt;</span>
+<span class="tk-prop">&lt;p</span> <span class="tk-val">class="type-heavent type-body-3 type-bold"</span><span class="tk-prop">&gt;</span>ข้อความ Bold<span class="tk-prop">&lt;/p&gt;</span>
+
+<span class="tk-comment">&lt;!-- Body — DB HeaventRounded Regular 18px --&gt;</span>
+<span class="tk-prop">&lt;p</span> <span class="tk-val">class="type-rounded type-body-3 type-regular"</span><span class="tk-prop">&gt;</span>ข้อความ Regular<span class="tk-prop">&lt;/p&gt;</span>
+
+<span class="tk-comment">&lt;!-- Body — DB Heavent Regular 14px --&gt;</span>
+<span class="tk-prop">&lt;span</span> <span class="tk-val">class="type-heavent type-body-4 type-regular"</span><span class="tk-prop">&gt;</span>Caption / helper text<span class="tk-prop">&lt;/span&gt;</span></code></pre>
+        </div>
+
       </section>
 
       <!-- ── SPACING ─────────────────────────────────────────── -->
@@ -1361,6 +1500,221 @@ figma.<span class="tk-fn">connect</span>(Button, <span class="tk-str">"YOUR_FIGM
 <span class="tk-comment">&lt;!-- Vertical --&gt;</span>
 &lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">"dv-v"</span>&gt;&lt;/<span class="tk-tag">div</span>&gt;</code></pre>
         </div>
+      </section>
+
+      <!-- ── TOGGLE ──────────────────────────────────────────── -->
+      <section id="toggle" class="ds-section">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Toggle</h2>
+            <p class="section-desc">Switch component — 3 variants · Simple, Icon, Short · คลิกเพื่อ interact</p>
+          </div>
+          <a href="https://www.figma.com/design/1oi1KLBMz6qVDhAOn7kQOf?node-id=36-942" target="_blank" class="figma-ref-btn">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z"/><path d="M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z"/><path d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 1 1-7 0z"/><path d="M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 1 1-7 0z"/><path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z"/></svg>
+            Open in Figma
+          </a>
+        </div>
+
+        <!-- ── Variants (interactive) ── -->
+        <div class="comp-block">
+          <div class="comp-label">Variants — คลิกเพื่อ toggle</div>
+          <div class="comp-preview" style="gap:48px;flex-wrap:wrap;padding:28px 24px;align-items:flex-start">
+
+            <!-- Simple -->
+            <div class="tgl-demo-col">
+              <div class="tgl-track active" role="switch" aria-checked="true" tabindex="0">
+                <div class="tgl-thumb"></div>
+              </div>
+              <span class="tgl-vname">Simple</span>
+              <span class="tgl-vspec">44 × 24 px</span>
+            </div>
+
+            <!-- Icon -->
+            <div class="tgl-demo-col">
+              <div class="tgl-track tgl-icon active" role="switch" aria-checked="true" tabindex="0">
+                <div class="tgl-thumb">
+                  <svg class="tgl-chk" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#8f90a6" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <svg class="tgl-x" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#8f90a6" stroke-width="3.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </div>
+              </div>
+              <span class="tgl-vname">Icon</span>
+              <span class="tgl-vspec">44 × 24 px</span>
+            </div>
+
+            <!-- Short -->
+            <div class="tgl-demo-col">
+              <div class="tgl-track tgl-short active" role="switch" aria-checked="true" tabindex="0">
+                <div class="tgl-thumb"></div>
+              </div>
+              <span class="tgl-vname">Short</span>
+              <span class="tgl-vspec">36 × 20 px</span>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ── States ── -->
+        <div class="comp-block">
+          <div class="comp-label">States</div>
+          <div class="comp-preview" style="padding:0;overflow:hidden">
+            <div class="tgl-state-grid">
+              <div class="tgl-sg-head"></div>
+              <div class="tgl-sg-head">ON</div>
+              <div class="tgl-sg-head">OFF</div>
+              <div class="tgl-sg-head">Disabled ON</div>
+              <div class="tgl-sg-head">Disabled OFF</div>
+
+              <!-- Simple -->
+              <div class="tgl-sg-label">Simple</div>
+              <div class="tgl-sg-cell"><div class="tgl-track active tgl-static" role="switch" aria-checked="true"><div class="tgl-thumb"></div></div></div>
+              <div class="tgl-sg-cell"><div class="tgl-track tgl-static" role="switch" aria-checked="false"><div class="tgl-thumb"></div></div></div>
+              <div class="tgl-sg-cell"><div class="tgl-track active tgl-disabled" role="switch" aria-checked="true" aria-disabled="true"><div class="tgl-thumb"></div></div></div>
+              <div class="tgl-sg-cell"><div class="tgl-track tgl-disabled" role="switch" aria-checked="false" aria-disabled="true"><div class="tgl-thumb"></div></div></div>
+
+              <!-- Icon -->
+              <div class="tgl-sg-label">Icon</div>
+              <div class="tgl-sg-cell">
+                <div class="tgl-track tgl-icon active tgl-static" role="switch" aria-checked="true">
+                  <div class="tgl-thumb"><svg class="tgl-chk" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#8f90a6" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><svg class="tgl-x" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#8f90a6" stroke-width="3.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+                </div>
+              </div>
+              <div class="tgl-sg-cell">
+                <div class="tgl-track tgl-icon tgl-static" role="switch" aria-checked="false">
+                  <div class="tgl-thumb"><svg class="tgl-chk" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#8f90a6" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><svg class="tgl-x" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#8f90a6" stroke-width="3.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+                </div>
+              </div>
+              <div class="tgl-sg-cell">
+                <div class="tgl-track tgl-icon active tgl-disabled" role="switch" aria-checked="true" aria-disabled="true">
+                  <div class="tgl-thumb"><svg class="tgl-chk" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#8f90a6" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><svg class="tgl-x" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#8f90a6" stroke-width="3.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+                </div>
+              </div>
+              <div class="tgl-sg-cell">
+                <div class="tgl-track tgl-icon tgl-disabled" role="switch" aria-checked="false" aria-disabled="true">
+                  <div class="tgl-thumb"><svg class="tgl-chk" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#8f90a6" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><svg class="tgl-x" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#8f90a6" stroke-width="3.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+                </div>
+              </div>
+
+              <!-- Short -->
+              <div class="tgl-sg-label">Short</div>
+              <div class="tgl-sg-cell"><div class="tgl-track tgl-short active tgl-static" role="switch" aria-checked="true"><div class="tgl-thumb"></div></div></div>
+              <div class="tgl-sg-cell"><div class="tgl-track tgl-short tgl-static" role="switch" aria-checked="false"><div class="tgl-thumb"></div></div></div>
+              <div class="tgl-sg-cell"><div class="tgl-track tgl-short active tgl-disabled" role="switch" aria-checked="true" aria-disabled="true"><div class="tgl-thumb"></div></div></div>
+              <div class="tgl-sg-cell"><div class="tgl-track tgl-short tgl-disabled" role="switch" aria-checked="false" aria-disabled="true"><div class="tgl-thumb"></div></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── With Label ── -->
+        <div class="comp-block">
+          <div class="comp-label">With Label</div>
+          <div class="comp-preview" style="flex-direction:column;gap:16px;align-items:flex-start;padding:20px 24px">
+
+            <label class="tgl-labeled">
+              <span class="tgl-lbl-text">Label</span>
+              <div class="tgl-track active" role="switch" aria-checked="true" tabindex="0">
+                <div class="tgl-thumb"></div>
+              </div>
+            </label>
+
+            <label class="tgl-labeled">
+              <span class="tgl-lbl-text">Require field <span class="tgl-req">*</span></span>
+              <div class="tgl-track tgl-icon" role="switch" aria-checked="false" tabindex="0">
+                <div class="tgl-thumb">
+                  <svg class="tgl-chk" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#8f90a6" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <svg class="tgl-x" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#8f90a6" stroke-width="3.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </div>
+              </div>
+            </label>
+
+            <label class="tgl-labeled">
+              <span class="tgl-lbl-text">Compact toggle</span>
+              <div class="tgl-track tgl-short active" role="switch" aria-checked="true" tabindex="0">
+                <div class="tgl-thumb"></div>
+              </div>
+            </label>
+
+            <label class="tgl-labeled">
+              <span class="tgl-lbl-text" style="color:var(--tx-3)">Disabled field</span>
+              <div class="tgl-track active tgl-disabled" role="switch" aria-checked="true" aria-disabled="true">
+                <div class="tgl-thumb"></div>
+              </div>
+            </label>
+
+          </div>
+        </div>
+
+        <!-- ── Code ── -->
+        <div class="codeblock">
+          <div class="cb-header">
+            <span class="cb-lang">HTML</span>
+            <button class="cb-copy" data-copy='<!-- Toggle Simple -->
+<div class="tgl-track" role="switch" aria-checked="false" tabindex="0">
+  <div class="tgl-thumb"></div>
+</div>
+
+<!-- Toggle Simple — Active -->
+<div class="tgl-track active" role="switch" aria-checked="true" tabindex="0">
+  <div class="tgl-thumb"></div>
+</div>
+
+<!-- Toggle Icon -->
+<div class="tgl-track tgl-icon" role="switch" aria-checked="false" tabindex="0">
+  <div class="tgl-thumb">
+    <svg class="tgl-chk" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#8f90a6" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    <svg class="tgl-x"  width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#8f90a6" stroke-width="3.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </div>
+</div>
+
+<!-- Toggle Short -->
+<div class="tgl-track tgl-short" role="switch" aria-checked="false" tabindex="0">
+  <div class="tgl-thumb"></div>
+</div>
+
+<!-- Toggle Disabled -->
+<div class="tgl-track tgl-disabled" role="switch" aria-checked="false" aria-disabled="true">
+  <div class="tgl-thumb"></div>
+</div>
+
+<!-- With Label -->
+<label class="tgl-labeled">
+  <span class="tgl-lbl-text">Label <span class="tgl-req">*</span></span>
+  <div class="tgl-track active" role="switch" aria-checked="true" tabindex="0">
+    <div class="tgl-thumb"></div>
+  </div>
+</label>'>Copy</button>
+          </div>
+          <pre><code><span class="tk-comment">&lt;!-- Toggle Simple --&gt;</span>
+&lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">"tgl-track"</span> <span class="tk-attr">role</span>=<span class="tk-str">"switch"</span> <span class="tk-attr">aria-checked</span>=<span class="tk-str">"false"</span> <span class="tk-attr">tabindex</span>=<span class="tk-str">"0"</span>&gt;
+  &lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">"tgl-thumb"</span>&gt;&lt;/<span class="tk-tag">div</span>&gt;
+&lt;/<span class="tk-tag">div</span>&gt;
+
+<span class="tk-comment">&lt;!-- Toggle Icon —  active state --&gt;</span>
+&lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">"tgl-track tgl-icon active"</span> <span class="tk-attr">role</span>=<span class="tk-str">"switch"</span> <span class="tk-attr">aria-checked</span>=<span class="tk-str">"true"</span> <span class="tk-attr">tabindex</span>=<span class="tk-str">"0"</span>&gt;
+  &lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">"tgl-thumb"</span>&gt;
+    &lt;<span class="tk-tag">svg</span> <span class="tk-attr">class</span>=<span class="tk-str">"tgl-chk"</span> ...&gt;...&lt;/<span class="tk-tag">svg</span>&gt;
+    &lt;<span class="tk-tag">svg</span> <span class="tk-attr">class</span>=<span class="tk-str">"tgl-x"</span> ...&gt;...&lt;/<span class="tk-tag">svg</span>&gt;
+  &lt;/<span class="tk-tag">div</span>&gt;
+&lt;/<span class="tk-tag">div</span>&gt;
+
+<span class="tk-comment">&lt;!-- Toggle Short --&gt;</span>
+&lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">"tgl-track tgl-short"</span> <span class="tk-attr">role</span>=<span class="tk-str">"switch"</span> <span class="tk-attr">aria-checked</span>=<span class="tk-str">"false"</span> <span class="tk-attr">tabindex</span>=<span class="tk-str">"0"</span>&gt;
+  &lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">"tgl-thumb"</span>&gt;&lt;/<span class="tk-tag">div</span>&gt;
+&lt;/<span class="tk-tag">div</span>&gt;
+
+<span class="tk-comment">&lt;!-- Disabled state --&gt;</span>
+&lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">"tgl-track tgl-disabled"</span> <span class="tk-attr">role</span>=<span class="tk-str">"switch"</span> <span class="tk-attr">aria-disabled</span>=<span class="tk-str">"true"</span>&gt;
+  &lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">"tgl-thumb"</span>&gt;&lt;/<span class="tk-tag">div</span>&gt;
+&lt;/<span class="tk-tag">div</span>&gt;
+
+<span class="tk-comment">&lt;!-- With Label --&gt;</span>
+&lt;<span class="tk-tag">label</span> <span class="tk-attr">class</span>=<span class="tk-str">"tgl-labeled"</span>&gt;
+  &lt;<span class="tk-tag">span</span> <span class="tk-attr">class</span>=<span class="tk-str">"tgl-lbl-text"</span>&gt;Label &lt;<span class="tk-tag">span</span> <span class="tk-attr">class</span>=<span class="tk-str">"tgl-req"</span>&gt;*&lt;/<span class="tk-tag">span</span>&gt;&lt;/<span class="tk-tag">span</span>&gt;
+  &lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">"tgl-track active"</span> <span class="tk-attr">role</span>=<span class="tk-str">"switch"</span> <span class="tk-attr">aria-checked</span>=<span class="tk-str">"true"</span> <span class="tk-attr">tabindex</span>=<span class="tk-str">"0"</span>&gt;
+    &lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">"tgl-thumb"</span>&gt;&lt;/<span class="tk-tag">div</span>&gt;
+  &lt;/<span class="tk-tag">div</span>&gt;
+&lt;/<span class="tk-tag">label</span>&gt;</code></pre>
+        </div>
+
       </section>
 
     </main>

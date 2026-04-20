@@ -681,6 +681,34 @@ input, textarea { font-family: inherit; }
   height: 1px; background: var(--border);
 }
 
+/* ── Typography Utility Classes ─────────────────────────────── */
+.type-heavent { font-family: 'DB Heavent', 'Noto Sans Thai', sans-serif; }
+.type-rounded { font-family: 'DB HeaventRounded', 'Noto Sans Thai', sans-serif; }
+
+.type-display-1 { font-size: 58px; line-height: 64px; font-weight: 700; }
+.type-display-2 { font-size: 48px; line-height: 58px; font-weight: 700; }
+.type-display-3 { font-size: 40px; line-height: 52px; font-weight: 700; }
+.type-display-4 { font-size: 33px; line-height: 40px; font-weight: 700; }
+
+.type-head-1 { font-size: 48px; line-height: 48px; font-weight: 900; }
+.type-head-2 { font-size: 40px; line-height: 40px; font-weight: 900; }
+.type-head-3 { font-size: 32px; line-height: 32px; font-weight: 900; }
+.type-head-4 { font-size: 28px; line-height: 28px; font-weight: 900; }
+.type-head-5 { font-size: 20px; line-height: 20px; font-weight: 900; }
+
+.type-title-1 { font-size: 28px; line-height: 28px; font-weight: 700; }
+.type-title-2 { font-size: 24px; line-height: 24px; font-weight: 700; }
+
+.type-body-1 { font-size: 24px; line-height: 24px; }
+.type-body-2 { font-size: 22px; line-height: 22px; }
+.type-body-3 { font-size: 18px; line-height: 18px; }
+.type-body-4 { font-size: 14px; line-height: 14px; }
+
+.type-bold    { font-weight: 700; }
+.type-black   { font-weight: 900; }
+.type-med     { font-weight: 500; }
+.type-regular { font-weight: 400; }
+
 /* ── Typography Groups (Figma Text Styles) ───────────────────── */
 .type-font-row {
   display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
@@ -1103,6 +1131,121 @@ input, textarea { font-family: inherit; }
 }
 
 .dv-v { width: 1px; height: 100%; background: var(--border); flex-shrink: 0; }
+
+/* ── Toggle Component ────────────────────────────────────────── */
+.tgl-track {
+  display: inline-flex; align-items: center;
+  width: 44px; height: 24px;
+  border-radius: 240px;
+  background: var(--border); /* inactive: #c7c9d9 */
+  padding: 2px;
+  cursor: pointer;
+  transition: background .2s ease;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+.tgl-track.active {
+  background: #27397c; /* Primary Cargo/900 */
+  justify-content: flex-end;
+}
+.tgl-track:hover:not(.tgl-disabled):not(.tgl-static) {
+  filter: brightness(1.08);
+}
+.tgl-track:focus-visible {
+  outline: 2px solid var(--p-600);
+  outline-offset: 2px;
+}
+.tgl-track.tgl-disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.tgl-track.tgl-static { cursor: default; }
+
+/* Thumb */
+.tgl-thumb {
+  width: 20px; height: 20px;
+  border-radius: 240px;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(85,87,112,.16), inset 0 0 1px rgba(40,41,61,.04);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: transform .2s ease;
+}
+
+/* Short variant — 36×20px */
+.tgl-track.tgl-short {
+  width: 36px; height: 20px;
+}
+.tgl-track.tgl-short .tgl-thumb {
+  width: 16px; height: 16px;
+}
+.tgl-track.tgl-short.active { justify-content: flex-end; }
+
+/* Icon variant — show/hide check/x icon */
+.tgl-chk { display: none; }
+.tgl-x   { display: block; }
+.tgl-track.tgl-icon.active .tgl-chk { display: block; }
+.tgl-track.tgl-icon.active .tgl-x   { display: none; }
+
+/* Variant showcase column */
+.tgl-demo-col {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+}
+.tgl-vname {
+  font-size: 12px; font-weight: 600; color: var(--tx-2);
+}
+.tgl-vspec {
+  font-size: 10px; font-family: var(--mono); color: var(--tx-3);
+}
+
+/* States grid */
+.tgl-state-grid {
+  display: grid;
+  grid-template-columns: 80px repeat(4, 1fr);
+  width: 100%;
+}
+.tgl-sg-head {
+  padding: 8px 16px;
+  font-size: 10.5px; font-weight: 700;
+  color: var(--tx-3); text-transform: uppercase; letter-spacing: .5px;
+  background: var(--bg-2);
+  border-bottom: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  white-space: nowrap;
+}
+.tgl-sg-head:last-child { border-right: none; }
+.tgl-sg-label {
+  display: flex; align-items: center;
+  padding: 16px;
+  font-size: 12px; font-weight: 600; color: var(--tx-2);
+  border-bottom: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  background: var(--bg-1);
+}
+.tgl-sg-label:last-of-type { border-bottom: none; }
+.tgl-sg-cell {
+  display: flex; align-items: center; justify-content: center;
+  padding: 16px;
+  border-bottom: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+}
+.tgl-sg-cell:last-child { border-right: none; }
+/* Remove bottom border on last row */
+.tgl-state-grid > :nth-last-child(-n+5) { border-bottom: none; }
+
+/* With Label */
+.tgl-labeled {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 8px; cursor: pointer; min-width: 200px;
+}
+.tgl-lbl-text {
+  font-size: 18px; color: var(--tx);
+  font-family: 'Noto Sans Thai', sans-serif;
+  line-height: 18px;
+}
+.tgl-req { color: #cf1322; font-size: 14px; }
 
 /* ── Code Block ──────────────────────────────────────────────── */
 .codeblock {
