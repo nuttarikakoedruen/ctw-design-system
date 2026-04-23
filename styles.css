@@ -7,6 +7,7 @@
 :root {
   /* Primary Cargo */
   --p-950: #1E2F6E;
+  --p-900: #27397C;
   --p-800: #3B509E;
   --p-700: #546BC0;
   --p-600: #7189E2;
@@ -871,67 +872,80 @@ input, textarea { font-family: inherit; }
   min-height: 80px;
 }
 
-/* ── Button Component ────────────────────────────────────────── */
+/* ── Button Component — Figma Button V.2 ─────────────────────── */
 .btn {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 9px 18px;
-  font-size: 13.5px; font-weight: 600;
-  border-radius: var(--r-md);
-  border: 1.5px solid transparent;
-  transition: all .16s ease;
-  cursor: pointer; white-space: nowrap; line-height: 1;
-  font-family: var(--font);
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 4px 16px; min-height: 38px;
+  font-size: 22px; font-weight: 400; line-height: 1;
+  font-family: 'DB HeaventRounded', 'DB Heavent', 'Noto Sans Thai', sans-serif;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  transition: background .15s, border-color .15s, color .15s, box-shadow .15s;
+  cursor: pointer; white-space: nowrap;
+  text-decoration: none;
+  box-sizing: border-box;
 }
-.btn:disabled { opacity: .42; cursor: not-allowed; pointer-events: none; }
-
-.btn-primary {
-  background: var(--p-800); color: #fff; border-color: var(--p-800);
-}
-.btn-primary:hover {
-  background: var(--p-700); border-color: var(--p-700);
-  box-shadow: 0 4px 16px rgba(59,80,158,.36);
-  transform: translateY(-1px);
-}
-.btn-primary:active { transform: translateY(0); }
-
-.btn-secondary {
-  background: transparent; color: var(--p-800); border-color: var(--p-800);
-}
-.btn-secondary:hover {
-  background: var(--p-50);
-  box-shadow: 0 4px 12px rgba(59,80,158,.14);
-  transform: translateY(-1px);
+.btn:disabled, .btn[disabled] {
+  background: #ebebf0 !important;
+  border-color: #c7c9d9 !important;
+  color: #c7c9d9 !important;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
-.btn-ghost {
-  background: transparent; color: var(--tx); border-color: var(--border-2);
-}
-.btn-ghost:hover { background: var(--bg-2); border-color: var(--p-300); }
+/* ── Filled: Primary (navy) ── */
+.btn-primary { background: var(--p-900); color: #fff; border-color: var(--p-900); }
+.btn-primary:hover  { background: var(--p-800); border-color: var(--p-800); }
+.btn-primary:active { background: var(--p-950); border-color: var(--p-950); }
 
-.btn-danger {
-  background: var(--red); color: #fff; border-color: var(--red);
-}
-.btn-danger:hover {
-  background: #DC2626; border-color: #DC2626;
-  box-shadow: 0 4px 14px rgba(239,68,68,.36); transform: translateY(-1px);
-}
+/* ── Filled: Secondary (gold-brown) ── */
+.btn-secondary { background: #ca915f; color: #fff; border-color: #ca915f; }
+.btn-secondary:hover  { background: #b57d4d; border-color: #b57d4d; }
+.btn-secondary:active { background: #a06a3c; border-color: #a06a3c; }
 
+/* ── Filled: White ── */
+.btn-white { background: #fff; color: #28293d; border-color: #c7c9d9; }
+.btn-white:hover  { background: #f5f7ff; border-color: var(--p-900); color: var(--p-900); }
+.btn-white:active { background: #edf0ff; }
+
+/* ── Filled: Danger ── */
+.btn-danger { background: #ff4d4f; color: #fff; border-color: #ff4d4f; }
+.btn-danger:hover  { background: #f03040; border-color: #f03040; }
+.btn-danger:active { background: #d9202d; border-color: #d9202d; }
+
+/* ── Ghost (Primary outline) ── */
+.btn-ghost { background: transparent; color: var(--p-900); border-color: var(--p-900); }
+.btn-ghost:hover  { background: #edf0ff; }
+.btn-ghost:active { background: #dae2ff; }
+
+/* ── Link (text only) ── */
+.btn-link {
+  background: transparent; color: var(--p-900);
+  border-color: transparent; padding: 0;
+  min-height: unset; border-radius: 0;
+  text-decoration: underline; text-underline-offset: 2px;
+}
+.btn-link:hover { color: var(--p-800); }
+
+/* ── Shape: Round (pill) ── */
+.btn-round { border-radius: 240px; }
+
+/* ── Sizes ── */
+.btn-sm  { padding: 0 8px;   min-height: 24px; font-size: 18px; border-radius: 4px; }
+.btn-lg  { padding: 8px 16px; min-height: 46px; font-size: 22px; }
+.btn-icon{ padding: 8px;     min-height: 38px; gap: 0; }
+.btn-sm.btn-icon { padding: 4px; min-height: 24px; }
+
+/* ── Gradient (bonus) ── */
 .btn-gradient {
-  background: linear-gradient(135deg, var(--p-600), var(--p-800)); color: #fff; border: none;
+  background: linear-gradient(135deg, var(--p-600), var(--p-900)); color: #fff; border: none;
 }
-.btn-gradient:hover {
-  background: linear-gradient(135deg, var(--p-700), var(--p-950));
-  box-shadow: 0 4px 16px rgba(59,80,158,.4); transform: translateY(-1px);
-}
+.btn-gradient:hover { background: linear-gradient(135deg, var(--p-700), var(--p-950)); }
 
-.btn-sm { padding: 6px 13px; font-size: 12px; }
-.btn-lg { padding: 12px 24px; font-size: 15px; }
-.btn-icon { padding: 9px; }
-
-.btn-force-hover {
-  background: var(--p-700) !important; border-color: var(--p-700) !important;
-  box-shadow: 0 4px 16px rgba(59,80,158,.36) !important;
-}
+/* ── Demo helpers ── */
+.btn-force-hover.btn-primary { background: var(--p-800) !important; border-color: var(--p-800) !important; }
+.btn-force-hover.btn-secondary { background: #b57d4d !important; border-color: #b57d4d !important; }
+.btn-force-hover.btn-ghost { background: #edf0ff !important; }
 
 .spin {
   width: 13px; height: 13px;
