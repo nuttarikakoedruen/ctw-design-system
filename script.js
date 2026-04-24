@@ -256,19 +256,22 @@ document.addEventListener('click', e => {
 });
 
 // Dropdown item selection
-document.querySelectorAll('.dd-item:not(.dd-item-danger)').forEach(item => {
+document.querySelectorAll('.dd-item:not(.dd-item-danger):not(.is-disabled)').forEach(item => {
   item.addEventListener('click', () => {
     const menu = item.closest('.dd-menu');
     const wrap = item.closest('.dd-wrap');
     const trigger = wrap?.querySelector('.dd-trigger');
 
-    // Update active state
-    menu?.querySelectorAll('.dd-item').forEach(i => i.classList.remove('dd-item-active'));
-    item.classList.add('dd-item-active');
+    // Update selected state
+    menu?.querySelectorAll('.dd-item').forEach(i => i.classList.remove('is-selected'));
+    item.classList.add('is-selected');
 
-    // Update trigger label (only for select-style dropdown)
+    // Update trigger label and fill state
     const sel = trigger?.querySelector('.dd-selected-text');
-    if (sel) sel.textContent = item.textContent.trim();
+    if (sel) {
+      sel.textContent = item.textContent.trim();
+      trigger?.classList.add('dd-has-value');
+    }
 
     closeAllDropdowns();
   });
@@ -1152,6 +1155,278 @@ document.querySelectorAll('.cal-input-root').forEach(root => {
   // Close on outside click
   document.addEventListener('click', e => { if (!root.contains(e.target)) drop.classList.remove('open'); });
 });
+
+/* ════════════════════════════════════════════════════════════════════
+   CTWTimePicker  —  drum-roll scroll-wheel time picker
+   Usage: add data-timepicker to a .tp-wrap element containing
+          a .tp-trigger > .tp-display
+   ════════════════════════════════════════════════════════════════════ */
+class CTWTimePicker {
+  constructor(wrap) {
+    this.wrap    = wrap;
+    this.trigger = wrap.querySelector('.tp-trigger');
+    this.display = wrap.querySelector('.tp-display');
+    this.hour    = null;   // confirmed value
+    this.min     = null;
+    this._pH     = 0;      // pending while menu is open
+    this._pM     = 0;
+    this._open   = false;
+    this.onChange = null;
+
+    this._buildMenu();
+    this._bindTrigger();
+    this._bindMenu();
+    wrap._ctwtp = this;
+  }
+
+  /* ── Build the dropdown menu ────────────────────────────────── */
+  _buildMenu() {
+    const ITEM_H = 40;
+
+    const menu = document.createElement('div');
+    menu.className = 'tp-menu';
+    menu.setAttribute('role', 'dialog');
+    menu.setAttribute('aria-label', 'เลือกเวลา');
+
+    menu.innerHTML = `
+      <div class="tp-cols">
+        <div class="tp-col-wrap" data-col="hour">
+          <div class="tp-col" aria-label="ชั่วโมง">
+            <div class="tp-col-inner" data-items="hour"></div>
+          </div>
+        </div>
+        <div class="tp-colon">:</div>
+        <div class="tp-col-wrap" data-col="min">
+          <div class="tp-col" aria-label="นาที">
+            <div class="tp-col-inner" data-items="min"></div>
+          </div>
+        </div>
+      </div>
+      <div class="tp-footer">
+        <button class="tp-now-btn" type="button">เวลาตอนนี้</button>
+        <button class="tp-confirm-btn" type="button">ยืนยัน</button>
+      </div>`;
+
+    this.wrap.appendChild(menu);
+    this.menu = menu;
+
+    /* Populate items 00-23 (hours) and 00-59 (mins) */
+    this._hourInner = menu.querySelector('[data-items="hour"]');
+    this._minInner  = menu.querySelector('[data-items="min"]');
+    this._hourCol   = menu.querySelector('[data-col="hour"] .tp-col');
+    this._minCol    = menu.querySelector('[data-col="min"]  .tp-col');
+
+    for (let h = 0; h < 24; h++) {
+      const el = document.createElement('div');
+      el.className = 'tp-item';
+      el.dataset.value = h;
+      el.textContent = String(h).padStart(2, '0');
+      this._hourInner.appendChild(el);
+    }
+    for (let m = 0; m < 60; m++) {
+      const el = document.createElement('div');
+      el.className = 'tp-item';
+      el.dataset.value = m;
+      el.textContent = String(m).padStart(2, '0');
+      this._minInner.appendChild(el);
+    }
+  }
+
+  /* ── Scroll a column to a specific value ───────────────────── */
+  _scrollTo(col, value, animate = false) {
+    const ITEM_H = 40;
+    if (animate) {
+      col.scrollTo({ top: value * ITEM_H, behavior: 'smooth' });
+    } else {
+      col.scrollTop = value * ITEM_H;
+    }
+  }
+
+  /* ── Highlight the active item in a column ─────────────────── */
+  _highlight(col, value) {
+    col.querySelectorAll('.tp-item').forEach(el => {
+      el.classList.toggle('is-active', Number(el.dataset.value) === value);
+    });
+  }
+
+  /* ── Open the picker ────────────────────────────────────────── */
+  openMenu() {
+    if (this.trigger.disabled) return;
+    const now = new Date();
+    this._pH = this.hour ?? now.getHours();
+    this._pM = this.min  ?? now.getMinutes();
+    this.menu.classList.add('is-open');
+    this._open = true;
+    /* Scroll without animation first (instant snap to value) */
+    this._scrollTo(this._hourCol, this._pH, false);
+    this._scrollTo(this._minCol,  this._pM, false);
+    this._highlight(this._hourCol, this._pH);
+    this._highlight(this._minCol,  this._pM);
+  }
+
+  /* ── Close the picker ───────────────────────────────────────── */
+  closeMenu() {
+    this.menu.classList.remove('is-open');
+    this._open = false;
+  }
+
+  /* ── Confirm selection ──────────────────────────────────────── */
+  _confirm() {
+    this.hour = this._pH;
+    this.min  = this._pM;
+    const hh = String(this.hour).padStart(2, '0');
+    const mm = String(this.min).padStart(2, '0');
+    if (this.display) {
+      this.display.textContent = `${hh}:${mm}`;
+    }
+    this.trigger.classList.add('tp-has-value');
+    /* Remove error state on confirm */
+    this.trigger.classList.remove('is-error');
+    if (this.onChange) this.onChange({ hour: this.hour, min: this.min, display: `${hh}:${mm}` });
+    this.closeMenu();
+  }
+
+  /* ── Bind trigger click ─────────────────────────────────────── */
+  _bindTrigger() {
+    this.trigger.addEventListener('click', e => {
+      e.stopPropagation();
+      if (this._open) {
+        this.closeMenu();
+      } else {
+        /* Close all other open pickers first */
+        document.querySelectorAll('[data-timepicker]').forEach(w => {
+          if (w !== this.wrap && w._ctwtp) w._ctwtp.closeMenu();
+        });
+        this.openMenu();
+      }
+    });
+    /* Keyboard: Escape closes */
+    this.wrap.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && this._open) { this.closeMenu(); this.trigger.focus(); }
+    });
+  }
+
+  /* ── Bind menu interactions ─────────────────────────────────── */
+  _bindMenu() {
+    const ITEM_H = 40;
+
+    /* Scroll → update pending value + highlight */
+    const onScroll = (col, isHour) => {
+      const raw = col.scrollTop / ITEM_H;
+      const idx = Math.round(raw);
+      if (isHour) {
+        this._pH = Math.max(0, Math.min(23, idx));
+        this._highlight(col, this._pH);
+      } else {
+        this._pM = Math.max(0, Math.min(59, idx));
+        this._highlight(col, this._pM);
+      }
+    };
+
+    this._hourCol.addEventListener('scroll', () => onScroll(this._hourCol, true),  { passive: true });
+    this._minCol.addEventListener( 'scroll', () => onScroll(this._minCol,  false), { passive: true });
+
+    /* Click on item → snap there */
+    this._hourCol.addEventListener('click', e => {
+      const item = e.target.closest('.tp-item');
+      if (!item) return;
+      const v = Number(item.dataset.value);
+      this._pH = v;
+      this._scrollTo(this._hourCol, v, true);
+      this._highlight(this._hourCol, v);
+    });
+    this._minCol.addEventListener('click', e => {
+      const item = e.target.closest('.tp-item');
+      if (!item) return;
+      const v = Number(item.dataset.value);
+      this._pM = v;
+      this._scrollTo(this._minCol, v, true);
+      this._highlight(this._minCol, v);
+    });
+
+    /* Wheel event for arrow-key-style scroll on desktop */
+    [this._hourCol, this._minCol].forEach(col => {
+      col.addEventListener('wheel', e => {
+        e.preventDefault();
+        const delta = e.deltaY > 0 ? 1 : -1;
+        col.scrollBy({ top: delta * ITEM_H, behavior: 'smooth' });
+      }, { passive: false });
+    });
+
+    /* Arrow key navigation inside open menu */
+    this.menu.addEventListener('keydown', e => {
+      const focused = document.activeElement;
+      const inHour  = this._hourCol.contains(focused) || focused === this._hourCol;
+      const col     = inHour ? this._hourCol : this._minCol;
+      const isHour  = inHour;
+      const cur     = isHour ? this._pH : this._pM;
+      const max     = isHour ? 23 : 59;
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        const nv = Math.min(cur + 1, max);
+        if (isHour) this._pH = nv; else this._pM = nv;
+        this._scrollTo(col, nv, true);
+        this._highlight(col, nv);
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        const nv = Math.max(cur - 1, 0);
+        if (isHour) this._pH = nv; else this._pM = nv;
+        this._scrollTo(col, nv, true);
+        this._highlight(col, nv);
+      } else if (e.key === 'Enter') {
+        this._confirm();
+      }
+    });
+
+    /* "เวลาตอนนี้" button */
+    this.menu.querySelector('.tp-now-btn').addEventListener('click', () => {
+      const now = new Date();
+      this._pH = now.getHours();
+      this._pM = now.getMinutes();
+      this._scrollTo(this._hourCol, this._pH, true);
+      this._scrollTo(this._minCol,  this._pM, true);
+      this._highlight(this._hourCol, this._pH);
+      this._highlight(this._minCol,  this._pM);
+    });
+
+    /* "ยืนยัน" button */
+    this.menu.querySelector('.tp-confirm-btn').addEventListener('click', () => this._confirm());
+
+    /* Stop clicks inside menu from bubbling to the outside-click handler */
+    this.menu.addEventListener('click', e => e.stopPropagation());
+  }
+}
+
+/* ── Init all [data-timepicker] elements ──────────────────────────── */
+document.querySelectorAll('[data-timepicker]').forEach(wrap => {
+  const tp = new CTWTimePicker(wrap);
+  /* Demo output wiring */
+  tp.onChange = ({ display }) => {
+    const out = document.getElementById('tp-output');
+    const res = document.getElementById('tp-result');
+    if (out && res) { res.textContent = display; out.style.display = 'block'; }
+  };
+});
+
+/* Close time pickers on outside click */
+document.addEventListener('click', e => {
+  document.querySelectorAll('[data-timepicker]').forEach(wrap => {
+    if (wrap._ctwtp && wrap._ctwtp._open && !wrap.contains(e.target)) {
+      wrap._ctwtp.closeMenu();
+    }
+  });
+});
+
+/* ── Static Time Picker demo columns (scroll to active item) ─────── */
+/* The static "Menu Panel" block in index.html has id=demo-hour-col / demo-min-col.
+   They contain 5 items (indices 0-4); active is index 2 → scrollTop = 2 × 40 = 80. */
+(function initStaticTPDemo() {
+  const ITEM_H = 40;
+  const hc = document.getElementById('demo-hour-col');
+  const mc = document.getElementById('demo-min-col');
+  if (hc) hc.scrollTop = 2 * ITEM_H;  /* centre the 3rd item (14 hours) */
+  if (mc) mc.scrollTop = 2 * ITEM_H;  /* centre the 3rd item (30 mins)  */
+})();
 
 /* ── Range Shortcuts ─────────────────────────────────────────────── */
 document.querySelectorAll('.cal-sel-btn[data-preset]').forEach(btn => {
