@@ -739,3 +739,450 @@ document.addEventListener('selectionchange', () => {
     });
   });
 })();
+
+// ── Calendar Component ───────────────────────────────────────
+const _CAL_MF  = ['มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน','กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม'];
+const _CAL_MS  = ['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'];
+const _CAL_DAY = ['อา','จ','อ','พ','พฤ','ศ','ส'];
+const _CAL_MF_SHORT = _CAL_MS;
+
+class CTWCalendar {
+  constructor(el, opts = {}) {
+    this.el        = el;
+    this.mode      = opts.mode || 'single';
+    this.view      = opts.view || 'date';
+    this.initView  = this.view;           // remember the picker's starting view
+    this.today     = new Date();
+    this.cursor    = new Date(this.today.getFullYear(), this.today.getMonth(), 1);
+    this.yearBase  = Math.floor(this.cursor.getFullYear() / 12) * 12;
+    this.sel       = null;
+    this.rangeA    = null;
+    this.rangeB    = null;
+    this.hoverDate = null;                // range hover preview
+    this.focusDate = new Date(this.today); // roving tabindex target
+    this.onChange  = opts.onChange || null;
+    el._ctwcal     = this;
+    this._draw();
+    this._bind();
+  }
+
+  toBE(y) { return y + 543; }
+
+  _same(a, b) {
+    return a && b &&
+      a.getFullYear() === b.getFullYear() &&
+      a.getMonth()    === b.getMonth()    &&
+      a.getDate()     === b.getDate();
+  }
+
+  // Effective range end — confirmed or hover-preview
+  _rEnd() {
+    return (this.rangeA && !this.rangeB) ? this.hoverDate : this.rangeB;
+  }
+
+  _isRangeStart(d) {
+    const a = this.rangeA, b = this._rEnd();
+    if (!a) return false;
+    if (!b || this._same(a, b)) return this._same(d, a);
+    return this._same(d, a <= b ? a : b);
+  }
+
+  _isRangeEnd(d) {
+    const a = this.rangeA, b = this._rEnd();
+    if (!a || !b || this._same(a, b)) return false;
+    return this._same(d, a <= b ? b : a);
+  }
+
+  _inRange(d) {
+    const a = this.rangeA, b = this._rEnd();
+    if (!a || !b || this._same(a, b)) return false;
+    const lo = a <= b ? a : b, hi = a <= b ? b : a;
+    return d > lo && d < hi;
+  }
+
+  _draw() {
+    if (this.view === 'month') this._drawMonth();
+    else if (this.view === 'year')  this._drawYear();
+    else this._drawDate();
+  }
+
+  _drawDate() {
+    const Y = this.cursor.getFullYear(), M = this.cursor.getMonth();
+    const firstDow = new Date(Y, M, 1).getDay();
+    const lastDay  = new Date(Y, M + 1, 0).getDate();
+    const prevLast = new Date(Y, M, 0).getDate();
+
+    // Build flat cell list
+    const cells = [];
+    for (let i = firstDow - 1; i >= 0; i--)
+      cells.push({ d: prevLast - i, other: true, date: new Date(Y, M - 1, prevLast - i) });
+    for (let d = 1; d <= lastDay; d++)
+      cells.push({ d, other: false, date: new Date(Y, M, d) });
+    let nd = 1;
+    while (cells.length % 7) { cells.push({ d: nd, other: true, date: new Date(Y, M + 1, nd) }); nd++; }
+
+    // Determine which cell gets tabindex=0 (roving tabindex)
+    const focusKey    = this.focusDate?.toISOString().split('T')[0];
+    const focusInView = cells.some(c => !c.other && c.date.toISOString().split('T')[0] === focusKey);
+    const selKey      = this.sel?.toISOString().split('T')[0];
+    const fallbackKey = selKey || new Date(Y, M, 1).toISOString().split('T')[0];
+    const activeKey   = focusInView ? focusKey : fallbackKey;
+
+    // Group into weeks
+    const weeks = [];
+    for (let i = 0; i < cells.length; i += 7) weeks.push(cells.slice(i, i + 7));
+
+    const rows = weeks.map(wk =>
+      `<div class="cal-row" role="row">${wk.map(c => {
+        const dt  = c.date.toISOString().split('T')[0];
+        const inR = this.mode === 'range' && this._inRange(c.date);
+        const rS  = this.mode === 'range' && this._isRangeStart(c.date);
+        const rE  = this.mode === 'range' && this._isRangeEnd(c.date);
+        const sel = this.mode === 'single' && this._same(c.date, this.sel);
+        const isT = this._same(c.date, this.today);
+
+        const cls = ['cal-day',
+          c.other ? 'other-month' : '',
+          isT     ? 'today'       : '',
+          sel     ? 'selected'    : '',
+          rS      ? 'range-start' : '',
+          rE      ? 'range-end'   : '',
+          inR     ? 'in-range'    : '',
+        ].filter(Boolean).join(' ');
+
+        const ariaLbl = `${c.d} ${_CAL_MF[c.date.getMonth()]} ${this.toBE(c.date.getFullYear())}`;
+        const ariaSel = (sel || rS || rE) ? 'true' : 'false';
+
+        return `<button class="cal-cell${c.other ? ' other' : ''}" ` +
+          `data-dt="${dt}" tabindex="${dt === activeKey ? '0' : '-1'}" ` +
+          `role="gridcell" aria-selected="${ariaSel}" aria-label="${ariaLbl}">` +
+          `<span class="${cls}">${c.d}</span></button>`;
+      }).join('')}</div>`
+    ).join('');
+
+    this.el.innerHTML =
+      `<div class="cal-header">
+        <button class="cal-nav-btn" data-a="prev" aria-label="เดือนก่อนหน้า">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="cal-title" data-a="to-month">${_CAL_MF[M]} ${this.toBE(Y)}</button>
+        <button class="cal-nav-btn" data-a="next" aria-label="เดือนถัดไป">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+      <div class="cal-weekdays" role="row">
+        ${_CAL_DAY.map(d => `<span class="cal-weekday" role="columnheader">${d}</span>`).join('')}
+      </div>
+      <div class="cal-grid" role="grid" aria-label="${_CAL_MF[M]} ${this.toBE(Y)}">${rows}</div>
+      <div class="cal-footer">
+        <button class="cal-today-btn" data-a="goto-today">วันนี้</button>
+      </div>`;
+  }
+
+  _drawMonth() {
+    const Y = this.cursor.getFullYear();
+    const rowsHtml = [0, 1, 2].map(r =>
+      `<div class="cal-my-row">${[0, 1, 2, 3].map(c => {
+        const m   = r * 4 + c;
+        const isSel = this.sel && this.sel.getFullYear() === Y && this.sel.getMonth() === m;
+        const isCur = this.today.getFullYear() === Y && this.today.getMonth() === m;
+        const cls = ['cal-my-cell', isCur && !isSel ? 'cal-my-cur' : '', isSel ? 'cal-my-sel' : ''].filter(Boolean).join(' ');
+        return `<button class="${cls}" data-m="${m}" aria-label="${_CAL_MF[m]} ${this.toBE(Y)}">${_CAL_MS[m]}</button>`;
+      }).join('')}</div>`
+    ).join('');
+    this.el.innerHTML =
+      `<div class="cal-header">
+        <button class="cal-nav-btn" data-a="prev" aria-label="ปีก่อนหน้า">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="cal-title" data-a="to-year">${this.toBE(Y)}</button>
+        <button class="cal-nav-btn" data-a="next" aria-label="ปีถัดไป">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+      <div class="cal-my-grid">${rowsHtml}</div>`;
+  }
+
+  _drawYear() {
+    const base = this.yearBase;
+    const rowsHtml = [0, 1, 2].map(r =>
+      `<div class="cal-my-row">${[0, 1, 2, 3].map(c => {
+        const yr    = base + r * 4 + c;
+        const isSel = this.sel && this.sel.getFullYear() === yr;
+        const isCur = this.today.getFullYear() === yr;
+        const cls   = ['cal-my-cell', isCur && !isSel ? 'cal-my-cur' : '', isSel ? 'cal-my-sel' : ''].filter(Boolean).join(' ');
+        return `<button class="${cls}" data-y="${yr}">${this.toBE(yr)}</button>`;
+      }).join('')}</div>`
+    ).join('');
+    this.el.innerHTML =
+      `<div class="cal-header">
+        <button class="cal-nav-btn" data-a="prev" aria-label="ช่วงปีก่อนหน้า">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="cal-title no-act" aria-live="polite">${this.toBE(base)} – ${this.toBE(base + 11)}</button>
+        <button class="cal-nav-btn" data-a="next" aria-label="ช่วงปีถัดไป">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+      <div class="cal-my-grid">${rowsHtml}</div>`;
+  }
+
+  // ── Select a date (single or range) ──────────────────────────
+  _selectDate(d) {
+    if (this.mode === 'single') {
+      this.sel = d;
+      if (this.onChange) this.onChange(d);
+    } else {
+      if (!this.rangeA || this.rangeB) {
+        // Start fresh range
+        this.rangeA = d; this.rangeB = null; this.hoverDate = null;
+      } else {
+        // Complete the range
+        if (d < this.rangeA) { this.rangeB = this.rangeA; this.rangeA = d; }
+        else if (this._same(d, this.rangeA)) { this.rangeB = d; } // same day
+        else this.rangeB = d;
+        this.hoverDate = null;
+        if (this.onChange) this.onChange({ start: this.rangeA, end: this.rangeB });
+      }
+    }
+  }
+
+  // ── Sync focusDate when navigating months with arrow buttons ─
+  _syncFocusAfterNav() {
+    const Y = this.cursor.getFullYear(), M = this.cursor.getMonth();
+    const lastDay = new Date(Y, M + 1, 0).getDate();
+    const day     = Math.min(this.focusDate.getDate(), lastDay);
+    this.focusDate = new Date(Y, M, day);
+  }
+
+  // ── Update tabindices without full redraw ─────────────────────
+  _updateTabIndex() {
+    const k = this.focusDate?.toISOString().split('T')[0];
+    this.el.querySelectorAll('[data-dt]').forEach(btn => {
+      btn.tabIndex = btn.dataset.dt === k ? 0 : -1;
+    });
+  }
+
+  _bind() {
+    // ── Click handler ─────────────────────────────────────────
+    this.el.addEventListener('click', e => {
+      const aBtn  = e.target.closest('[data-a]');
+      const dtBtn = e.target.closest('[data-dt]');
+      const mBtn  = e.target.closest('[data-m]');
+      const yBtn  = e.target.closest('[data-y]');
+
+      if (aBtn) {
+        const a = aBtn.dataset.a;
+        if (a === 'prev') {
+          if (this.view === 'date') {
+            this.cursor.setMonth(this.cursor.getMonth() - 1);
+            this._syncFocusAfterNav();
+          } else if (this.view === 'month') {
+            this.cursor.setFullYear(this.cursor.getFullYear() - 1);
+          } else {
+            this.yearBase -= 12;
+          }
+        } else if (a === 'next') {
+          if (this.view === 'date') {
+            this.cursor.setMonth(this.cursor.getMonth() + 1);
+            this._syncFocusAfterNav();
+          } else if (this.view === 'month') {
+            this.cursor.setFullYear(this.cursor.getFullYear() + 1);
+          } else {
+            this.yearBase += 12;
+          }
+        } else if (a === 'to-month')   { this.view = 'month'; }
+        else if (a === 'to-year')      { this.view = 'year'; }
+        else if (a === 'goto-today') {
+          this.cursor    = new Date(this.today.getFullYear(), this.today.getMonth(), 1);
+          this.focusDate = new Date(this.today);
+          this.view      = 'date';
+        }
+        this._draw();
+      }
+
+      if (dtBtn) {
+        const d = new Date(dtBtn.dataset.dt + 'T00:00:00');
+        // Navigate to the month of clicked cell (handles other-month clicks)
+        if (dtBtn.classList.contains('other')) {
+          this.cursor = new Date(d.getFullYear(), d.getMonth(), 1);
+        }
+        this.focusDate = d;
+        this._selectDate(d);
+        this._draw();
+        requestAnimationFrame(() => {
+          this.el.querySelector(`[data-dt="${dtBtn.dataset.dt}"]`)?.focus();
+        });
+      }
+
+      if (mBtn) {
+        this.cursor.setMonth(parseInt(mBtn.dataset.m));
+        this.focusDate = new Date(this.cursor.getFullYear(), this.cursor.getMonth(), 1);
+        if (this.initView === 'month') {
+          // Month-only picker: select directly
+          this.sel = new Date(this.cursor.getFullYear(), this.cursor.getMonth(), 1);
+          if (this.onChange) this.onChange({ year: this.cursor.getFullYear(), month: this.cursor.getMonth() });
+          this._draw();
+        } else {
+          this.view = 'date';
+          this._draw();
+        }
+      }
+
+      if (yBtn) {
+        this.cursor.setFullYear(parseInt(yBtn.dataset.y));
+        if (this.initView === 'year') {
+          // Year-only picker: select directly
+          this.sel = new Date(this.cursor.getFullYear(), 0, 1);
+          if (this.onChange) this.onChange(this.cursor.getFullYear());
+          this._draw();
+        } else {
+          this.view = 'month';
+          this._draw();
+        }
+      }
+    });
+
+    // ── Range hover preview ───────────────────────────────────
+    if (this.mode === 'range') {
+      this.el.addEventListener('mouseover', e => {
+        if (!this.rangeA || this.rangeB) return;
+        const dtBtn = e.target.closest('[data-dt]');
+        if (!dtBtn) return;
+        const d = new Date(dtBtn.dataset.dt + 'T00:00:00');
+        if (!this.hoverDate || !this._same(d, this.hoverDate)) {
+          this.hoverDate = d;
+          this._draw();
+        }
+      });
+      this.el.addEventListener('mouseleave', () => {
+        if (this.rangeA && !this.rangeB && this.hoverDate) {
+          this.hoverDate = null;
+          this._draw();
+        }
+      });
+    }
+
+    // ── Keyboard navigation (ARIA APG Date Picker pattern) ───
+    this.el.addEventListener('keydown', e => {
+      if (this.view !== 'date') return;
+      const NAV_KEYS = [
+        'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown',
+        'PageUp', 'PageDown', 'Home', 'End', 'Enter', ' '
+      ];
+      if (!NAV_KEYS.includes(e.key)) return;
+      e.preventDefault();
+
+      if (e.key === 'Enter' || e.key === ' ') {
+        this._selectDate(new Date(this.focusDate));
+        this._draw();
+        requestAnimationFrame(() => {
+          const k = this.focusDate.toISOString().split('T')[0];
+          this.el.querySelector(`[data-dt="${k}"]`)?.focus();
+        });
+        return;
+      }
+
+      const fd = new Date(this.focusDate);
+      switch (e.key) {
+        case 'ArrowLeft':  fd.setDate(fd.getDate() - 1); break;
+        case 'ArrowRight': fd.setDate(fd.getDate() + 1); break;
+        case 'ArrowUp':    fd.setDate(fd.getDate() - 7); break;
+        case 'ArrowDown':  fd.setDate(fd.getDate() + 7); break;
+        case 'PageUp':
+          if (e.ctrlKey || e.shiftKey) fd.setFullYear(fd.getFullYear() - 1);
+          else fd.setMonth(fd.getMonth() - 1);
+          break;
+        case 'PageDown':
+          if (e.ctrlKey || e.shiftKey) fd.setFullYear(fd.getFullYear() + 1);
+          else fd.setMonth(fd.getMonth() + 1);
+          break;
+        case 'Home': fd.setDate(fd.getDate() - fd.getDay()); break;          // → Sunday of week
+        case 'End':  fd.setDate(fd.getDate() + (6 - fd.getDay())); break;    // → Saturday of week
+      }
+
+      this.focusDate = fd;
+
+      const needsNav = fd.getFullYear() !== this.cursor.getFullYear() ||
+                       fd.getMonth()    !== this.cursor.getMonth();
+      if (needsNav) {
+        this.cursor = new Date(fd.getFullYear(), fd.getMonth(), 1);
+        this._draw();
+      } else {
+        // Lightweight update — only shift the roving tabindex
+        this._updateTabIndex();
+      }
+
+      requestAnimationFrame(() => {
+        const k = fd.toISOString().split('T')[0];
+        this.el.querySelector(`[data-dt="${k}"]`)?.focus();
+      });
+    });
+  }
+}
+
+/* ── Init all [data-cal] elements ──────────────────────────────── */
+document.querySelectorAll('[data-cal]').forEach(el => {
+  const cal = new CTWCalendar(el, {
+    mode: el.dataset.calMode || 'single',
+    view: el.dataset.calView || 'date',
+  });
+  const inputId = el.dataset.calInput;
+  if (inputId) {
+    const inp = document.getElementById(inputId);
+    cal.onChange = d => {
+      if (!inp || !(d instanceof Date)) return;
+      inp.value = `${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}/${d.getFullYear() + 543}`;
+    };
+  }
+});
+
+/* ── Calendar Input: open / close dropdown ──────────────────────── */
+document.querySelectorAll('.cal-input-root').forEach(root => {
+  const wrap = root.querySelector('.tf-input-wrap') || root.querySelector('.tf-input');
+  const drop = root.querySelector('.cal-dropdown');
+  if (!wrap || !drop) return;
+
+  // Toggle on click of the entire input area (including icon)
+  wrap.addEventListener('click', e => { e.stopPropagation(); drop.classList.toggle('open'); });
+
+  // Close on Escape
+  drop.addEventListener('keydown', e => { if (e.key === 'Escape') { drop.classList.remove('open'); wrap.querySelector('.tf-input')?.focus(); } });
+
+  // Close on outside click
+  document.addEventListener('click', e => { if (!root.contains(e.target)) drop.classList.remove('open'); });
+});
+
+/* ── Range Shortcuts ─────────────────────────────────────────────── */
+document.querySelectorAll('.cal-sel-btn[data-preset]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const calEl = btn.closest('.cal-with-sel')?.querySelector('[data-cal]');
+    if (!calEl?._ctwcal) return;
+    const cal = calEl._ctwcal;
+    const now = new Date();
+
+    btn.closest('.cal-sel-side').querySelectorAll('.cal-sel-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const p = btn.dataset.preset;
+    if (p === 'today') {
+      cal.rangeA = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      cal.rangeB = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      cal.sel    = null;
+      cal.cursor = new Date(now.getFullYear(), now.getMonth(), 1);
+      cal.focusDate = new Date(now);
+    } else {
+      const a = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      const b = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      if (p === '30ago') a.setDate(a.getDate() - 30);
+      else               b.setDate(b.getDate() + 30);
+      cal.rangeA    = a;
+      cal.rangeB    = b;
+      cal.sel       = null;
+      cal.hoverDate = null;
+      cal.cursor    = new Date(a.getFullYear(), a.getMonth(), 1);
+      cal.focusDate = new Date(a);
+    }
+    cal._draw();
+  });
+});
